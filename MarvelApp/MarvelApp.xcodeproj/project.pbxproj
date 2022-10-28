@@ -9,21 +9,21 @@
 /* Begin PBXBuildFile section */
 		C12A267D290B23C0002BD3F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12A267C290B23C0002BD3F2 /* AppDelegate.swift */; };
 		C12A267F290B23C0002BD3F2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12A267E290B23C0002BD3F2 /* SceneDelegate.swift */; };
-		C12A2681290B23C0002BD3F2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12A2680290B23C0002BD3F2 /* ViewController.swift */; };
 		C12A2687290B23C0002BD3F2 /* MarvelApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C12A2685290B23C0002BD3F2 /* MarvelApp.xcdatamodeld */; };
 		C12A2689290B23C2002BD3F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C12A2688290B23C2002BD3F2 /* Assets.xcassets */; };
 		C12A268C290B23C2002BD3F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C12A268A290B23C2002BD3F2 /* LaunchScreen.storyboard */; };
+		C12A26BD290C505D002BD3F2 /* SceneDelegate + Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12A26BC290C505D002BD3F2 /* SceneDelegate + Router.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C12A2679290B23C0002BD3F2 /* MarvelApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C12A267C290B23C0002BD3F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C12A267E290B23C0002BD3F2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C12A2680290B23C0002BD3F2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C12A2686290B23C0002BD3F2 /* MarvelApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MarvelApp.xcdatamodel; sourceTree = "<group>"; };
 		C12A2688290B23C2002BD3F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C12A268B290B23C2002BD3F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C12A268D290B23C2002BD3F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C12A26BC290C505D002BD3F2 /* SceneDelegate + Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SceneDelegate + Router.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +56,23 @@
 		C12A267B290B23C0002BD3F2 /* MarvelApp */ = {
 			isa = PBXGroup;
 			children = (
-				C12A267C290B23C0002BD3F2 /* AppDelegate.swift */,
-				C12A267E290B23C0002BD3F2 /* SceneDelegate.swift */,
-				C12A2680290B23C0002BD3F2 /* ViewController.swift */,
+				C12A26BB290C5048002BD3F2 /* AppDelegate */,
 				C12A2688290B23C2002BD3F2 /* Assets.xcassets */,
 				C12A268A290B23C2002BD3F2 /* LaunchScreen.storyboard */,
 				C12A268D290B23C2002BD3F2 /* Info.plist */,
 				C12A2685290B23C0002BD3F2 /* MarvelApp.xcdatamodeld */,
 			);
 			path = MarvelApp;
+			sourceTree = "<group>";
+		};
+		C12A26BB290C5048002BD3F2 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				C12A267C290B23C0002BD3F2 /* AppDelegate.swift */,
+				C12A267E290B23C0002BD3F2 /* SceneDelegate.swift */,
+				C12A26BC290C505D002BD3F2 /* SceneDelegate + Router.swift */,
+			);
+			path = AppDelegate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +145,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C12A2681290B23C0002BD3F2 /* ViewController.swift in Sources */,
+				C12A26BD290C505D002BD3F2 /* SceneDelegate + Router.swift in Sources */,
 				C12A267D290B23C0002BD3F2 /* AppDelegate.swift in Sources */,
 				C12A2687290B23C0002BD3F2 /* MarvelApp.xcdatamodeld in Sources */,
 				C12A267F290B23C0002BD3F2 /* SceneDelegate.swift in Sources */,
@@ -283,10 +291,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MarvelApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -311,10 +318,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MarvelApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
