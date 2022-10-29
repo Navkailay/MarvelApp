@@ -33,7 +33,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e3g-ja-n8P">
-                                    <rect key="frame" x="0.0" y="0.0" width="390" height="561.33333333333337"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="587"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3hB-fD-367">
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="506.33333333333331"/>
@@ -47,21 +47,33 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Chp-9d-GaH">
+                                                    <rect key="frame" x="331" y="10" width="44" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="Chp-9d-GaH" secondAttribute="height" multiplier="1:1" id="Ns6-p4-HvX"/>
+                                                        <constraint firstAttribute="height" constant="44" id="blW-wp-Jbz"/>
+                                                    </constraints>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" image="unbookmarked"/>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
+                                                <constraint firstItem="Chp-9d-GaH" firstAttribute="top" secondItem="wIt-Ko-ymc" secondAttribute="top" constant="-5" id="45M-Gz-gOX"/>
                                                 <constraint firstAttribute="bottom" secondItem="wIt-Ko-ymc" secondAttribute="bottom" constant="15" id="90k-i1-cNM"/>
                                                 <constraint firstItem="wIt-Ko-ymc" firstAttribute="leading" secondItem="E9c-O7-Kqe" secondAttribute="leading" constant="15" id="ZUi-e1-H51"/>
                                                 <constraint firstAttribute="trailing" secondItem="wIt-Ko-ymc" secondAttribute="trailing" constant="15" id="dfk-oK-EmT"/>
+                                                <constraint firstAttribute="trailing" secondItem="Chp-9d-GaH" secondAttribute="trailing" constant="15" id="hAF-XP-1Vj"/>
                                                 <constraint firstItem="wIt-Ko-ymc" firstAttribute="top" secondItem="E9c-O7-Kqe" secondAttribute="top" constant="15" id="u8a-po-xp1"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F9M-aZ-xDZ">
-                                            <rect key="frame" x="15" y="521.33333333333337" width="360" height="25"/>
+                                            <rect key="frame" x="15" y="521.33333333333337" width="309" height="50.666666666666629"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N1t-ES-EMJ">
-                                                    <rect key="frame" x="15" y="15" width="330" height="0.0"/>
-                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Description" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N1t-ES-EMJ">
+                                                    <rect key="frame" x="15" y="15.000000000000002" width="279" height="25.666666666666671"/>
+                                                    <fontDescription key="fontDescription" name="BadaBoomBB" family="BadaBoom BB" pointSize="24"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -81,7 +93,7 @@
                                         <constraint firstItem="E9c-O7-Kqe" firstAttribute="leading" secondItem="3hB-fD-367" secondAttribute="leading" id="NjI-kI-xxe"/>
                                         <constraint firstItem="F9M-aZ-xDZ" firstAttribute="leading" secondItem="e3g-ja-n8P" secondAttribute="leading" constant="15" id="PP7-y0-gbU"/>
                                         <constraint firstItem="E9c-O7-Kqe" firstAttribute="trailing" secondItem="3hB-fD-367" secondAttribute="trailing" id="Xqr-Hy-rV9"/>
-                                        <constraint firstAttribute="trailing" secondItem="F9M-aZ-xDZ" secondAttribute="trailing" constant="15" id="YAX-JH-n5n"/>
+                                        <constraint firstAttribute="trailing" secondItem="F9M-aZ-xDZ" secondAttribute="trailing" constant="66" id="YAX-JH-n5n"/>
                                         <constraint firstAttribute="bottom" secondItem="F9M-aZ-xDZ" secondAttribute="bottom" constant="15" id="e1v-R2-Ow1"/>
                                         <constraint firstItem="3hB-fD-367" firstAttribute="leading" secondItem="e3g-ja-n8P" secondAttribute="leading" id="iYR-ja-W3g"/>
                                         <constraint firstItem="3hB-fD-367" firstAttribute="top" secondItem="e3g-ja-n8P" secondAttribute="top" id="j4E-cA-c2j"/>
@@ -153,6 +165,7 @@
         </view>
     </objects>
     <resources>
+        <image name="unbookmarked" width="24" height="24"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

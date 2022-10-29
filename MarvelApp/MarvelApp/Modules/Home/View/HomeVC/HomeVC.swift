@@ -38,7 +38,7 @@ class HomeVC: UIViewController {
     }
     func setupViewModel() {
 //        self.viewModel = HomeViewModel(delegate: self)
-        viewModel?.fetchData(name: nil, limit: 10, offset: 50)
+        viewModel?.fetchData(name: nil, limit: 20, offset: 80)
     }
 }
 
