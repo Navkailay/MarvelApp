@@ -20,7 +20,8 @@ extension HomeVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: getReusableIdentifier(indexPath: indexPath), for: indexPath) as! CollectionViewCell
         cell.item = self.viewModel?.item(section: indexPath.section,
-                                          index: indexPath.row)
+                                         index: indexPath.row)
+        
         
         return cell
     }
@@ -33,7 +34,7 @@ extension HomeVC: UICollectionViewDataSource {
         switch model {
         case _ as CharacterCVCViewModel:
             return CharacterCVC.defaultResuableIdentifier
-          default:
+        default:
             fatalError("please configure the remaining cells or ReusableIdentifiers")
         }
     }
@@ -41,7 +42,7 @@ extension HomeVC: UICollectionViewDataSource {
 
 extension HomeVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellSide = collectionView.bounds.width/3 - 10
+        let cellSide = collectionView.bounds.width/3 - 8
         let size = CGSize(width: cellSide, height: cellSide)
         return size
     }

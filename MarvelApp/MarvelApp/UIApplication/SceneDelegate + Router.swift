@@ -17,9 +17,9 @@ extension SceneDelegate {
     func setHomeRootController(_ windowScene: UIWindowScene){
         let window = UIWindow(windowScene: windowScene)
         let vc = HomeVC.loadFromNib()
-//        let viewModel = HomeViewModel(delegate: vc)
-//        viewModel.service = DefaultServiceAdapter(networkManager: NetworkManager.shared, router: Router.shared)
-//        vc.viewModel = viewModel
+        let viewModel = HomeViewModel(delegate: vc)
+        viewModel.service = DefaultServiceAdapter(networkManager: NetworkManager.shared)
+        vc.viewModel = viewModel
         let navigationController = UINavigationController(rootViewController: vc)
         navigationController.navigationBar.tintColor = Colors.appGreen.color
         window.rootViewController = navigationController

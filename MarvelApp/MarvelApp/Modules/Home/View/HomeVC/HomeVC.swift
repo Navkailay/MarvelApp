@@ -17,7 +17,7 @@ class HomeVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchTextField: UITextField!
     var viewModel: HomeViewModel?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -30,13 +30,15 @@ class HomeVC: UIViewController {
     
     func setupView(){
         searchTextField.superview?.roundedCorner(radius: 10)
+        searchTextField.addDoneToKeyboard()
         self.collectionView.register(CharacterCVC.self)
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+        
     }
     func setupViewModel() {
-        self.viewModel = HomeViewModel(delegate: self)
-        viewModel?.fetchData(search: "dadasd")
+//        self.viewModel = HomeViewModel(delegate: self)
+        viewModel?.fetchData(search: nil)
     }
     
 }

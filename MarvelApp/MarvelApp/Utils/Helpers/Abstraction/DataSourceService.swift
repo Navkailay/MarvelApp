@@ -11,5 +11,7 @@ typealias GenericResultClouser<T> = (Result<T, Error>) -> Void
 
 
 protocol HomeDataSourceService {
-//    func fetchdata() -> DecodedFuture<HomeDataModel>
+
+    func fetchCharacters(name: String?, limit: Int, offset: Int?) -> DecodedFuture<CharactersModel>
+    
 }
