@@ -8,6 +8,17 @@
 import Foundation
 import UIKit
 
+extension HomeVC: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = DetailsVC.loadFromNib()
+        vc.modalPresentationStyle = .fullScreen
+        if let item = viewModel?.item(section: indexPath.section, index: indexPath.row) as? CharacterCVCViewModel {
+            vc.viewModel = DetailsViewModel(delegate: vc, characterViewModel: item, service: ImageLoader.shared)
+        }
+        self.showDetailViewController(vc, sender: self)
+    }
+}
+
 extension HomeVC: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         viewModel?.sectionCount ?? 0

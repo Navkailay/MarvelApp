@@ -18,19 +18,29 @@ class CharacterCVCViewModel {
     }
     
     var smallThumbnailPath: String {
-         "\(character.thumbnail.path)/\(MarvelImageSizeConfiguration.standard_xlarge.rawValue).\(character.thumbnail.thumbnailExtension)"
+        "\(character.thumbnail.path)/\(MarvelImageSizeConfiguration.standard_xlarge.rawValue).\(character.thumbnail.thumbnailExtension)"
+    }
+    
+    var largeThumbnailPath: String {
+        "\(character.thumbnail.path)/\(MarvelImageSizeConfiguration.portrait_incredible.rawValue).\(character.thumbnail.thumbnailExtension)"
+    }
+    
+    var characterDescription: String {
+        let desc = character.resultDescription.isEmpty ? Constants.Message.noDescription : character.resultDescription
+        return desc
     }
 }
 
 
-class CharacterCVC: CollectionViewCell {
-
+class CharacterCVC: CollectionViewCell, ImageLoaderDelegate {
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imgView: UIImageView!
     
-    private var cancellable: AnyCancellable?
-    private var animator: UIViewPropertyAnimator?
-     var service : ImageLoaderService?
+    var cancellable: AnyCancellable?
+    var animator: UIViewPropertyAnimator?
+    var service : ImageLoaderService?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         DispatchQueue.main.async {
@@ -45,7 +55,7 @@ class CharacterCVC: CollectionViewCell {
         animator?.stopAnimation(true)
         cancellable?.cancel()
     }
-
+    
     override func configure(_ item: Any?) {
         guard let item = item as? CharacterCVCViewModel else { return }
         service = item.service
@@ -56,7 +66,7 @@ class CharacterCVC: CollectionViewCell {
         }
     }
     
-    private func showImage(image: UIImage?) {
+    internal func showImage(image: UIImage?) {
         imgView.alpha = 0.0
         animator?.stopAnimation(false)
         imgView.image = image
@@ -65,9 +75,9 @@ class CharacterCVC: CollectionViewCell {
         })
     }
     
-    private func loadImage(for imagePath: String) -> AnyPublisher<UIImage?, Never> {
-        guard let service = service else { return Just(nil).eraseToAnyPublisher() }
-         return Just(imagePath)
+    internal func loadImage(for imagePath: String?) -> AnyPublisher<UIImage?, Never> {
+        guard let imagePath = imagePath, let service = service else { return Just(nil).eraseToAnyPublisher() }
+        return Just(imagePath)
             .flatMap({ poster -> AnyPublisher<UIImage?, Never> in
                 return service.imageLoader.loadImage(from: imagePath)
             })

@@ -10,6 +10,7 @@ import Foundation
 enum MarvelImageSizeConfiguration: String {
     case portrait_xlarge = "portrait_xlarge"
     case standard_xlarge = "standard_xlarge"
+    case portrait_incredible = "portrait_incredible"
 
 }
  

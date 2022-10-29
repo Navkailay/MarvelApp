@@ -33,8 +33,8 @@ class HomeViewModel {
         )
     }
     
-    func fetchData(search: String?) {
-        service?.fetchCharacters(name: search, limit: 30, offset: nil)
+    func fetchData(name: String?, limit: Int, offset: Int?) {
+        service?.fetchCharacters(name: name, limit: limit, offset: offset)
             .sink(receiveCompletion: { [weak self] failure in
                 guard let self else { return }
                 switch failure {

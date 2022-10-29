@@ -38,11 +38,9 @@ class HomeVC: UIViewController {
     }
     func setupViewModel() {
 //        self.viewModel = HomeViewModel(delegate: self)
-        viewModel?.fetchData(search: nil)
+        viewModel?.fetchData(name: nil, limit: 10, offset: 50)
     }
-    
 }
-
 
 extension HomeVC: HomeViewModelDelegate {
     func didFailed(with error: FloatError) {
