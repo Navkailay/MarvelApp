@@ -16,7 +16,8 @@ extension UITextField {
                                     style: .plain,
                                     target: self,
                                     action: #selector(dismissKeyboard))
-        bar.items = [reset]
+        reset.tintColor = .black
+        bar.items = [UIBarButtonItem.flexibleSpace(), reset]
         bar.sizeToFit()
         self.inputAccessoryView = bar
     }
@@ -35,5 +36,11 @@ extension UITextField {
         .eraseToAnyPublisher()
     }
     
+    func serPlaceHolderColor(_ color: UIColor, text: String) {
+        self.attributedPlaceholder = NSAttributedString(
+            string: text,
+            attributes: [NSAttributedString.Key.foregroundColor: color]
+        )
+    }
     
 }

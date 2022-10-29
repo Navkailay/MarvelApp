@@ -8,12 +8,15 @@
 import Foundation
 
 enum EndpointCases: Endpoint {
-    case characters(name: String?, limit: Int, offset: Int?)
+    case characters(name: String?,
+                    limit: Int,
+                    offset: Int?)
+    case getComics(characterId: Int,
+                   limit: Int)
     
     var httpMethod: HTTPMethod {
         switch self {
-   
-        case .characters: return .get
+        case .characters, .getComics: return .get
         }
     }
     
@@ -25,6 +28,7 @@ enum EndpointCases: Endpoint {
         switch self {
    
         case .characters: return "v1/public/characters"
+        case .getComics(characterId: let characterId, limit: _): return "/v1/public/characters/\(characterId)/comics"
         }
     }
     
@@ -35,13 +39,17 @@ enum EndpointCases: Endpoint {
     var body: [String : Any]? {
         var parameters = [String: Any]()
         switch self {
-        case .characters(name: let name, limit: let limit, offset: let offset):
+        case .characters(name: let name,
+                         limit: let limit,
+                         offset: let offset):
             parameters = [
-                    "limit": limit,
-                    "offset": offset ?? 0]
+                    "limit": limit, "offset": offset ?? 0]
             if let name = name {
                 parameters["name"] = name
             }
+        case .getComics(characterId: _,
+                        limit: let limit):
+            parameters = ["limit": limit]
         }
         
         parameters["ts"] = 1

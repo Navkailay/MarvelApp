@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol HomeViewModelDelegate: AnyObject {
+protocol ViewModelDelegate: AnyObject {
     func didFailed(with error: FloatError)
     func refreshData()
  }
@@ -31,6 +31,7 @@ class HomeVC: UIViewController {
     func setupView(){
         searchTextField.superview?.roundedCorner(radius: 10)
         searchTextField.addDoneToKeyboard()
+        searchTextField.serPlaceHolderColor(.white, text: Constants.search)
         self.collectionView.register(CharacterCVC.self)
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
@@ -42,7 +43,7 @@ class HomeVC: UIViewController {
     }
 }
 
-extension HomeVC: HomeViewModelDelegate {
+extension HomeVC: ViewModelDelegate {
     func didFailed(with error: FloatError) {
         self.presentFloatingAlert(with: error)
 

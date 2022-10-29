@@ -12,8 +12,8 @@ extension HomeVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = DetailsVC.loadFromNib()
         vc.modalPresentationStyle = .fullScreen
-        if let item = viewModel?.item(section: indexPath.section, index: indexPath.row) as? CharacterCVCViewModel {
-            vc.viewModel = DetailsViewModel(delegate: vc, characterViewModel: item, service: ImageLoader.shared)
+        if let item = viewModel?.item(section: indexPath.section, index: indexPath.row) as? CharacterViewModel {
+            vc.viewModel = DetailsViewModel(delegate: vc, characterViewModel: item, imageService: ImageLoader.shared, service: DefaultServiceAdapter(networkManager: NetworkManager.shared))
         }
         self.showDetailViewController(vc, sender: self)
     }
@@ -43,7 +43,7 @@ extension HomeVC: UICollectionViewDataSource {
             index: indexPath.row
         )
         switch model {
-        case _ as CharacterCVCViewModel:
+        case _ as CharacterViewModel:
             return CharacterCVC.defaultResuableIdentifier
         default:
             fatalError("please configure the remaining cells or ReusableIdentifiers")

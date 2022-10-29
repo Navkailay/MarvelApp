@@ -16,4 +16,6 @@ struct Constants {
         static let trySomeKeyword = "Please try some other keyword"
         static let noDescription = "No Description"
      }
+    
+    static let search = "Search"
 }

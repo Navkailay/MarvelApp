@@ -8,18 +8,19 @@
 import UIKit
 import Combine
 
-protocol DetailsVCDelegate { }
+//protocol DetailsVCDelegate { }
 
 class DetailsVC: UIViewController, ImageLoaderDelegate {
-    
-    var cancellable: AnyCancellable?
-    var animator: UIViewPropertyAnimator?
+
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
-    
+    @IBOutlet weak var collectionView: UICollectionView!
+
     var viewModel: DetailsViewModel?
+    var cancellable: AnyCancellable?
+    var animator: UIViewPropertyAnimator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,9 +35,14 @@ class DetailsVC: UIViewController, ImageLoaderDelegate {
             self.showImage(image: image)
         }
         titleLabel.superview?.setupGradient(frameBounds: self.titleLabel.superview?.bounds)
+        fetchComics()
     }
     
-     
+    func fetchComics() {
+        if let id = viewModel?.characterViewModel?.character.id {
+            viewModel?.fetchComics(characterId: id, limit: 5)
+        }
+    }
     
     @IBAction func actionDismiss(_ sender: Any) {
         self.dismiss(animated: true)
@@ -55,23 +61,25 @@ extension DetailsVC {
     }
     
     func loadImage(for imagePath: String?) -> AnyPublisher<UIImage?, Never> {
-        guard let imagePath = imagePath, let service = viewModel?.service else { return Just(nil).eraseToAnyPublisher() }
+        guard let imagePath = imagePath,
+                let imageService = viewModel?.imageService else { return Just(nil).eraseToAnyPublisher() }
         return Just(imagePath)
             .flatMap({ poster -> AnyPublisher<UIImage?, Never> in
-                return service.loadImage(from: imagePath)
+                return imageService.loadImage(from: imagePath)
             })
             .eraseToAnyPublisher()
     }
 }
 
-extension DetailsVC: DetailsVCDelegate { }
+extension DetailsVC: ViewModelDelegate {
+    func didFailed(with error: FloatError) {
+        self.presentFloatingAlert(with: error)
 
-extension UIView {
-    func setupGradient(frameBounds: CGRect?){
-        guard let frameBounds = frameBounds else { return }
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = frameBounds
-        gradientLayer.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
-        self.layer.insertSublayer(gradientLayer, at: 0)
     }
+    
+    func refreshData() {
+       // collectionView.reloadData()
+    }
+    
+    
 }

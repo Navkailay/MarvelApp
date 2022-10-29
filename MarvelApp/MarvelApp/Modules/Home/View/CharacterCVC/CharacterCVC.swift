@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-class CharacterCVCViewModel {
+class CharacterViewModel {
     var character : CharacterData
     var service : ImageLoaderService?
     
@@ -57,7 +57,7 @@ class CharacterCVC: CollectionViewCell, ImageLoaderDelegate {
     }
     
     override func configure(_ item: Any?) {
-        guard let item = item as? CharacterCVCViewModel else { return }
+        guard let item = item as? CharacterViewModel else { return }
         service = item.service
         titleLabel.text = item.character.name
         cancellable = loadImage(for: item.smallThumbnailPath).sink { [weak self] image in

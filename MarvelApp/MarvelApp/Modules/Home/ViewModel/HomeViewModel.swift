@@ -10,12 +10,12 @@ import Combine
 
 class HomeViewModel {
     var sectionModels: [SectionModel] = []
-    weak var delegate: HomeViewModelDelegate?
+    weak var delegate: ViewModelDelegate?
     var service: DefaultServiceAdapter?
     var charactersData : CharactersData?
     private var cancellables = Set<AnyCancellable>()
     
-    init(delegate: HomeViewModelDelegate? = nil) {
+    init(delegate: ViewModelDelegate? = nil) {
         self.delegate = delegate
     }
     // setup the models for listing out the results on UI
@@ -26,7 +26,7 @@ class HomeViewModel {
         self.sectionModels.append(
             SectionModel(headerModel: nil,
                          cellModels: charactersData?.results
-                .map({ CharacterCVCViewModel(character: $0,
+                .map({ CharacterViewModel(character: $0,
                                              service: ImageLoaderService(imageLoader: ImageLoader.shared))}) ?? [],
                          footerModel: nil,
                          rowHeight: nil)

@@ -1,2 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="22A380" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier=""/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="22A380" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="MCCharacter" representedClassName="MCCharacter" syncable="YES" codeGenerationType="class">
+        <attribute name="characterDescription" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="comics" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MCComic"/>
+        <relationship name="thumbnail" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MCThumbnail"/>
+    </entity>
+    <entity name="MCComic" representedClassName="MCComic" syncable="YES" codeGenerationType="class">
+        <attribute name="comicDescription" optional="YES" attributeType="String"/>
+        <attribute name="issueNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="thumbnail" optional="YES" maxCount="1" deletionRule="Nullify"/>
+    </entity>
+    <entity name="MCThumbnail" representedClassName="MCThumbnail" syncable="YES" codeGenerationType="class">
+        <attribute name="path" optional="YES" attributeType="String"/>
+        <attribute name="thumbnailExtension" optional="YES" attributeType="String"/>
+    </entity>
+</model>
