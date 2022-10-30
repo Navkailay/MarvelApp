@@ -19,20 +19,21 @@ struct CharactersModel: Codable {
 // MARK: - DataClass
 struct CharactersData: Codable {
     let offset, limit, total, count: Int
-    let results: [CharacterData]
+    let results: [CharacterData]?
 }
 
 // MARK: - Result
 struct CharacterData: Codable {
     let id: Int
-    let name, resultDescription: String
-    let modified: String
+    let name: String?
+    let resultDescription: String
+    let modified: String?
     let thumbnail: Thumbnail
-    let resourceURI: String
-    let comics, series: Comics
-    let stories: Stories
-    let events: Comics
-    let urls: [URLElement]
+    let resourceURI: String?
+    let comics, series: Comics?
+    let stories: Stories?
+    let events: Comics?
+    let urls: [URLElement]?
 
     enum CodingKeys: String, CodingKey {
         case id, name

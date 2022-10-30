@@ -9,6 +9,7 @@ import Foundation
 
 struct DefaultServiceAdapter  {
     let networkManager: NetworkManager
+    let database: CoreDataManager
     //     let router: Router
 }
 

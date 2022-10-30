@@ -16,11 +16,11 @@ extension MCCharacter {
         return NSFetchRequest<MCCharacter>(entityName: "MCCharacter")
     }
 
-    @NSManaged public var title: String?
     @NSManaged public var characterDescription: String?
     @NSManaged public var id: Int64
+    @NSManaged public var title: String?
     @NSManaged public var comics: NSSet?
-    @NSManaged public var thumbnail: NSSet?
+    @NSManaged public var thumbnail: MCThumbnail?
 
 }
 
@@ -38,23 +38,6 @@ extension MCCharacter {
 
     @objc(removeComics:)
     @NSManaged public func removeFromComics(_ values: NSSet)
-
-}
-
-// MARK: Generated accessors for thumbnail
-extension MCCharacter {
-
-    @objc(addThumbnailObject:)
-    @NSManaged public func addToThumbnail(_ value: MCThumbnail)
-
-    @objc(removeThumbnailObject:)
-    @NSManaged public func removeFromThumbnail(_ value: MCThumbnail)
-
-    @objc(addThumbnail:)
-    @NSManaged public func addToThumbnail(_ values: NSSet)
-
-    @objc(removeThumbnail:)
-    @NSManaged public func removeFromThumbnail(_ values: NSSet)
 
 }
 

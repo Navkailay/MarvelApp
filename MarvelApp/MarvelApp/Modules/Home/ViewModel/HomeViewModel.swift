@@ -9,10 +9,10 @@ import Foundation
 import Combine
 
 class HomeViewModel {
-    var sectionModels: [SectionModel] = []
     weak var delegate: ViewModelDelegate?
     var service: DefaultServiceAdapter?
     var charactersData : CharactersData?
+    var sectionModels: [SectionModel] = []
     private var cancellables = Set<AnyCancellable>()
     
     init(delegate: ViewModelDelegate? = nil) {
@@ -25,9 +25,10 @@ class HomeViewModel {
         // append Sections
         self.sectionModels.append(
             SectionModel(headerModel: nil,
-                         cellModels: charactersData?.results
+                         cellModels: (charactersData?.results ?? [])
                 .map({ CharacterViewModel(character: $0,
-                                             service: ImageLoaderService(imageLoader: ImageLoader.shared))}) ?? [],
+                                          service: ImageLoaderService(imageLoader: ImageLoader.shared))
+                }),
                          footerModel: nil,
                          rowHeight: nil)
         )
@@ -45,10 +46,10 @@ class HomeViewModel {
             }, receiveValue: { [weak self] charactersModel in
                 guard let self else { return }
                 self.charactersData = charactersModel.data
+                self.service?.database.addCharacters(characters: self.charactersData?.results ?? [])
                 self.setupSectionModels()
                 self.reload()
             }).store(in: &cancellables)
-        
     }
 }
 

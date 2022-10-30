@@ -16,10 +16,10 @@ extension MCComic {
         return NSFetchRequest<MCComic>(entityName: "MCComic")
     }
 
-    @NSManaged public var title: String?
-    @NSManaged public var issueNumber: Int64
     @NSManaged public var comicDescription: String?
     @NSManaged public var id: Int64
+    @NSManaged public var issueNumber: Int64
+    @NSManaged public var title: String?
     @NSManaged public var thumbnail: MCThumbnail?
 
 }
