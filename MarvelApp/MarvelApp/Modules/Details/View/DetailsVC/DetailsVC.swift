@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import Reachability
 
 //protocol DetailsVCDelegate { }
 
@@ -18,17 +19,33 @@ class DetailsVC: UIViewController, ImageLoaderDelegate {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var bookmarkButton: UIButton!
-
+   
+    lazy private var loadingIndicator: UIActivityIndicatorView = {
+        let loadingIndicator = UIActivityIndicatorView(style: .medium)
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.color = .white
+        return loadingIndicator
+    }()
     var viewModel: DetailsViewModel?
     var cancellable: AnyCancellable?
     var animator: UIViewPropertyAnimator?
-    
+    var reachability = try? Reachability()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
     
     func setupView() {
+        //UI
+        self.collectionView.register(ComicCVC.self)
+        self.collectionView.dataSource = self
+        self.collectionView.delegate = self
+//        self.collectionView.refreshControl = refreshControl
+        // loading indicator
+        loadingIndicator.center = self.collectionView.center
+        self.collectionView.addSubview(loadingIndicator)
+        //Datasource on UI
         titleLabel.text = viewModel?.characterViewModel?.character.title
         descriptionLabel.text = viewModel?.characterViewModel?.characterDescription
         cancellable = loadImage(for: viewModel?.characterViewModel?.largeThumbnailPath).sink { [weak self] image in
@@ -37,6 +54,7 @@ class DetailsVC: UIViewController, ImageLoaderDelegate {
         }
         titleLabel.superview?.setupGradient(frameBounds: self.titleLabel.superview?.bounds)
         bookmarkButton.isSelected = viewModel?.characterViewModel?.character.isBookmark ?? false
+        // Fetch Data
         fetchComics()
     }
     
@@ -80,7 +98,7 @@ extension DetailsVC {
 
 extension DetailsVC: ViewModelDelegate {
     func didBeginFetching() {
-        //
+        
     }
     
     func didFailed(with error: FloatError) {
@@ -89,8 +107,6 @@ extension DetailsVC: ViewModelDelegate {
     }
     
     func refreshUI() {
-       // collectionView.reloadData()
+        collectionView.reloadData()
     }
-    
-    
 }

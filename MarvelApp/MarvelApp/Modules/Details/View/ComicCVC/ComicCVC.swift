@@ -1,18 +1,17 @@
 //
-//  CharacterCVC.swift
+//  ComicCVC.swift
 //  MarvelApp
 //
-//  Created by Navpreet Kailay on 29/10/22.
+//  Created by Navpreet Kailay on 31/10/22.
 //
 
 import UIKit
 import Combine
 
-class CharacterCVC: CollectionViewCell, ImageLoaderDelegate {
+class ComicCVC: CollectionViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imgView: UIImageView!
-    
     var cancellable: AnyCancellable?
     var animator: UIViewPropertyAnimator?
     var service : ImageLoaderService?
@@ -20,7 +19,7 @@ class CharacterCVC: CollectionViewCell, ImageLoaderDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         DispatchQueue.main.async {
-            self.imgView.makeCircular()
+            self.imgView.roundedCorner(radius: 8)
         }
     }
     
@@ -33,10 +32,10 @@ class CharacterCVC: CollectionViewCell, ImageLoaderDelegate {
     }
     
     override func configure(_ item: Any?) {
-        guard let item = item as? CharacterViewModel else { return }
+        guard let item = item as? ComicViewModel else { return }
         service = item.service
-        titleLabel.text = item.character.title
-        cancellable = loadImage(for: item.smallThumbnailPath).sink { [weak self] image in
+        titleLabel.text = item.comic?.title
+        cancellable = loadImage(for: item.largeThumbnailPath).sink { [weak self] image in
             guard let self = self else { return }
             self.showImage(image: image)
         }

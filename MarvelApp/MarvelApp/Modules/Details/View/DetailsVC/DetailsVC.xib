@@ -16,6 +16,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailsVC" customModule="MarvelApp" customModuleProvider="target">
             <connections>
                 <outlet property="bookmarkButton" destination="Chp-9d-GaH" id="HX6-K8-xkI"/>
+                <outlet property="collectionView" destination="m4P-QS-Cfb" id="rGc-Mc-oYc"/>
                 <outlet property="descriptionLabel" destination="N1t-ES-EMJ" id="H6O-xe-S3O"/>
                 <outlet property="imageView" destination="3hB-fD-367" id="5qf-Y1-wVe"/>
                 <outlet property="titleLabel" destination="wIt-Ko-ymc" id="SI7-qE-rTX"/>
@@ -34,16 +35,16 @@
                             <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e3g-ja-n8P">
-                                    <rect key="frame" x="0.0" y="0.0" width="390" height="587"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="879.33333333333337"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3hB-fD-367">
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="506.33333333333331"/>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E9c-O7-Kqe">
-                                            <rect key="frame" x="0.0" y="441" width="390" height="65.333333333333314"/>
+                                            <rect key="frame" x="0.0" y="437.66666666666669" width="390" height="68.666666666666686"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Title" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wIt-Ko-ymc">
-                                                    <rect key="frame" x="15" y="15.000000000000004" width="360" height="35.333333333333343"/>
+                                                    <rect key="frame" x="15" y="14.999999999999996" width="360" height="38.666666666666657"/>
                                                     <fontDescription key="fontDescription" name="BadaBoomBB" family="BadaBoom BB" pointSize="33"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -74,10 +75,10 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F9M-aZ-xDZ">
-                                            <rect key="frame" x="15" y="521.33333333333337" width="309" height="50.666666666666629"/>
+                                            <rect key="frame" x="15" y="521.33333333333337" width="309" height="38"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Description" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N1t-ES-EMJ">
-                                                    <rect key="frame" x="15" y="15.000000000000002" width="279" height="25.666666666666671"/>
+                                                    <rect key="frame" x="5" y="5" width="289" height="28"/>
                                                     <fontDescription key="fontDescription" name="BadaBoomBB" family="BadaBoom BB" pointSize="24"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -86,23 +87,47 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="N1t-ES-EMJ" secondAttribute="trailing" constant="15" id="Keg-nm-FIZ"/>
-                                                <constraint firstItem="N1t-ES-EMJ" firstAttribute="leading" secondItem="F9M-aZ-xDZ" secondAttribute="leading" constant="15" id="NMC-Iv-7WX"/>
-                                                <constraint firstAttribute="bottom" secondItem="N1t-ES-EMJ" secondAttribute="bottom" constant="10" id="cFT-fC-kQL"/>
-                                                <constraint firstItem="N1t-ES-EMJ" firstAttribute="top" secondItem="F9M-aZ-xDZ" secondAttribute="top" constant="15" id="yzM-kJ-zep"/>
+                                                <constraint firstItem="N1t-ES-EMJ" firstAttribute="leading" secondItem="F9M-aZ-xDZ" secondAttribute="leading" constant="5" id="NMC-Iv-7WX"/>
+                                                <constraint firstAttribute="bottom" secondItem="N1t-ES-EMJ" secondAttribute="bottom" constant="5" id="cFT-fC-kQL"/>
+                                                <constraint firstItem="N1t-ES-EMJ" firstAttribute="top" secondItem="F9M-aZ-xDZ" secondAttribute="top" constant="5" id="yzM-kJ-zep"/>
                                             </constraints>
                                         </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#Classic Issues" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKv-o8-1Gz">
+                                            <rect key="frame" x="20" y="576.33333333333337" width="166.33333333333334" height="28"/>
+                                            <fontDescription key="fontDescription" name="BadaBoomBB" family="BadaBoom BB" pointSize="24"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="m4P-QS-Cfb">
+                                            <rect key="frame" x="10" y="614.33333333333337" width="380" height="250"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="250" id="tmg-bz-n8G"/>
+                                            </constraints>
+                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="SnY-Bb-Pxa">
+                                                <size key="itemSize" width="0.0" height="0.0"/>
+                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            </collectionViewFlowLayout>
+                                        </collectionView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
+                                        <constraint firstItem="m4P-QS-Cfb" firstAttribute="top" secondItem="F9M-aZ-xDZ" secondAttribute="bottom" constant="55" id="2qE-bg-8Zo"/>
                                         <constraint firstItem="F9M-aZ-xDZ" firstAttribute="top" secondItem="3hB-fD-367" secondAttribute="bottom" constant="15" id="50E-W9-k2n"/>
+                                        <constraint firstAttribute="trailing" secondItem="m4P-QS-Cfb" secondAttribute="trailing" id="Lwz-9O-vsV"/>
                                         <constraint firstItem="E9c-O7-Kqe" firstAttribute="leading" secondItem="3hB-fD-367" secondAttribute="leading" id="NjI-kI-xxe"/>
                                         <constraint firstItem="F9M-aZ-xDZ" firstAttribute="leading" secondItem="e3g-ja-n8P" secondAttribute="leading" constant="15" id="PP7-y0-gbU"/>
+                                        <constraint firstItem="pKv-o8-1Gz" firstAttribute="leading" secondItem="N1t-ES-EMJ" secondAttribute="leading" id="SBe-ZQ-KlI"/>
                                         <constraint firstItem="E9c-O7-Kqe" firstAttribute="trailing" secondItem="3hB-fD-367" secondAttribute="trailing" id="Xqr-Hy-rV9"/>
                                         <constraint firstAttribute="trailing" secondItem="F9M-aZ-xDZ" secondAttribute="trailing" constant="66" id="YAX-JH-n5n"/>
-                                        <constraint firstAttribute="bottom" secondItem="F9M-aZ-xDZ" secondAttribute="bottom" constant="15" id="e1v-R2-Ow1"/>
+                                        <constraint firstItem="m4P-QS-Cfb" firstAttribute="leading" secondItem="e3g-ja-n8P" secondAttribute="leading" constant="10" id="ZBi-03-tFs"/>
+                                        <constraint firstAttribute="bottom" secondItem="m4P-QS-Cfb" secondAttribute="bottom" constant="15" id="cKh-a6-GfJ"/>
                                         <constraint firstItem="3hB-fD-367" firstAttribute="leading" secondItem="e3g-ja-n8P" secondAttribute="leading" id="iYR-ja-W3g"/>
                                         <constraint firstItem="3hB-fD-367" firstAttribute="top" secondItem="e3g-ja-n8P" secondAttribute="top" id="j4E-cA-c2j"/>
                                         <constraint firstItem="E9c-O7-Kqe" firstAttribute="bottom" secondItem="3hB-fD-367" secondAttribute="bottom" id="koe-7d-U1O"/>
+                                        <constraint firstItem="m4P-QS-Cfb" firstAttribute="top" secondItem="pKv-o8-1Gz" secondAttribute="bottom" constant="10" id="mr4-dd-auC"/>
                                         <constraint firstAttribute="trailing" secondItem="3hB-fD-367" secondAttribute="trailing" id="sxI-cI-BOJ"/>
                                     </constraints>
                                 </view>
@@ -115,8 +140,6 @@
                                 <constraint firstAttribute="bottom" secondItem="e3g-ja-n8P" secondAttribute="bottom" id="fNp-xZ-NUr"/>
                                 <constraint firstItem="e3g-ja-n8P" firstAttribute="top" secondItem="4E1-9U-Sqa" secondAttribute="top" id="vrl-OC-NaL"/>
                             </constraints>
-                            <viewLayoutGuide key="contentLayoutGuide" id="ytO-uo-49W"/>
-                            <viewLayoutGuide key="frameLayoutGuide" id="gaX-lb-ZCY"/>
                         </scrollView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gA6-Gf-pYC">
                             <rect key="frame" x="0.0" y="47" width="390" height="44"/>
@@ -166,7 +189,7 @@
                 <constraint firstItem="ue9-ul-Qz8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="jbV-Rb-82q"/>
                 <constraint firstItem="gA6-Gf-pYC" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="qWR-7B-XeY"/>
             </constraints>
-            <point key="canvasLocation" x="-23" y="21"/>
+            <point key="canvasLocation" x="-23.076923076923077" y="20.616113744075829"/>
         </view>
     </objects>
     <resources>

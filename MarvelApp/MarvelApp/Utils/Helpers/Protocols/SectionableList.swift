@@ -15,12 +15,12 @@ class SectionModel {
     var headerModel: Any?
     var cellModels: [Any] = []
     var footerModel: Any?
-    var rowHeight: CGFloat?
+    var itemSize: CGSize?
     
-    init(headerModel: Any? = nil, cellModels: [Any], footerModel: Any? = nil, rowHeight: CGFloat?) {
+    init(headerModel: Any? = nil, cellModels: [Any], footerModel: Any? = nil, itemSize: CGSize?) {
         self.headerModel = headerModel
         self.cellModels = cellModels
         self.footerModel = footerModel
-        self.rowHeight = rowHeight
+        self.itemSize = itemSize
     }
 }

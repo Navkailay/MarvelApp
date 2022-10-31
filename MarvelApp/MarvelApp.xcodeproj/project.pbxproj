@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C104C03F290F517A0007A279 /* ComicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C104C03E290F517A0007A279 /* ComicViewModel.swift */; };
+		C104C041290F54240007A279 /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C104C040290F54240007A279 /* CharacterViewModel.swift */; };
+		C104C043290F54E40007A279 /* DetailsVC + Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = C104C042290F54E40007A279 /* DetailsVC + Grid.swift */; };
+		C104C047290F56E40007A279 /* ComicCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C104C045290F56E40007A279 /* ComicCVC.swift */; };
+		C104C048290F56E50007A279 /* ComicCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C104C046290F56E40007A279 /* ComicCVC.xib */; };
 		C1145672290C5F6800419A4B /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1145670290C5F6800419A4B /* UIViewController.swift */; };
 		C1145673290C5F6800419A4B /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1145671290C5F6800419A4B /* UITextField.swift */; };
 		C1145677290C5F9A00419A4B /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1145676290C5F9A00419A4B /* UIView.swift */; };
@@ -71,6 +76,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C104C03E290F517A0007A279 /* ComicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicViewModel.swift; sourceTree = "<group>"; };
+		C104C040290F54240007A279 /* CharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewModel.swift; sourceTree = "<group>"; };
+		C104C042290F54E40007A279 /* DetailsVC + Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailsVC + Grid.swift"; sourceTree = "<group>"; };
+		C104C045290F56E40007A279 /* ComicCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicCVC.swift; sourceTree = "<group>"; };
+		C104C046290F56E40007A279 /* ComicCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComicCVC.xib; sourceTree = "<group>"; };
 		C1145670290C5F6800419A4B /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		C1145671290C5F6800419A4B /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		C1145676290C5F9A00419A4B /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -148,6 +158,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C104C044290F56CE0007A279 /* ComicCVC */ = {
+			isa = PBXGroup;
+			children = (
+				C104C045290F56E40007A279 /* ComicCVC.swift */,
+				C104C046290F56E40007A279 /* ComicCVC.xib */,
+			);
+			path = ComicCVC;
+			sourceTree = "<group>";
+		};
 		C1145674290C5F6900419A4B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				C114568F290C63DF00419A4B /* HomeViewModel.swift */,
+				C104C040290F54240007A279 /* CharacterViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -358,6 +378,7 @@
 		C11456E1290D5DF100419A4B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C104C044290F56CE0007A279 /* ComicCVC */,
 				C11456E2290D5DF600419A4B /* DetailsVC */,
 			);
 			path = View;
@@ -368,6 +389,7 @@
 			children = (
 				C11456E3290D5E0C00419A4B /* DetailsVC.swift */,
 				C11456E4290D5E0C00419A4B /* DetailsVC.xib */,
+				C104C042290F54E40007A279 /* DetailsVC + Grid.swift */,
 			);
 			path = DetailsVC;
 			sourceTree = "<group>";
@@ -376,6 +398,7 @@
 			isa = PBXGroup;
 			children = (
 				C11456E8290D5E3400419A4B /* DetailsViewModel.swift */,
+				C104C03E290F517A0007A279 /* ComicViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -545,7 +568,7 @@
 			);
 			mainGroup = C12A2670290B23C0002BD3F2;
 			packageReferences = (
-				C1844749290F1E61003F522D /* XCRemoteSwiftPackageReference "Reachability.swift" */,
+				C1844749290F1E61003F522D /* XCRemoteSwiftPackageReference "Reachability" */,
 			);
 			productRefGroup = C12A267A290B23C0002BD3F2 /* Products */;
 			projectDirPath = "";
@@ -568,6 +591,7 @@
 				C12A268C290B23C2002BD3F2 /* LaunchScreen.storyboard in Resources */,
 				C11456E6290D5E0C00419A4B /* DetailsVC.xib in Resources */,
 				C12A26C7290C58FB002BD3F2 /* HomeVC.xib in Resources */,
+				C104C048290F56E50007A279 /* ComicCVC.xib in Resources */,
 				C12A2689290B23C2002BD3F2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -589,6 +613,7 @@
 				C11456FC290ED97C00419A4B /* MCComic+CoreDataClass.swift in Sources */,
 				C11456C5290C6FCB00419A4B /* Endpoint.swift in Sources */,
 				C11456AC290C678700419A4B /* ReusableView.swift in Sources */,
+				C104C041290F54240007A279 /* CharacterViewModel.swift in Sources */,
 				C11456FB290ED97C00419A4B /* MCThumbnail+CoreDataProperties.swift in Sources */,
 				C11456CD290C74BE00419A4B /* Constants.swift in Sources */,
 				C1145686290C603300419A4B /* Colors.swift in Sources */,
@@ -598,6 +623,7 @@
 				C11456A8290C678700419A4B /* TableViewCell.swift in Sources */,
 				C12A26C6290C58FB002BD3F2 /* HomeVC.swift in Sources */,
 				C11456FA290ED97C00419A4B /* MCThumbnail+CoreDataClass.swift in Sources */,
+				C104C03F290F517A0007A279 /* ComicViewModel.swift in Sources */,
 				C1145673290C5F6800419A4B /* UITextField.swift in Sources */,
 				C114567B290C5FE500419A4B /* FloatError.swift in Sources */,
 				C1145672290C5F6800419A4B /* UIViewController.swift in Sources */,
@@ -620,10 +646,12 @@
 				C11456DF290C846200419A4B /* ImageLoader.swift in Sources */,
 				C12A267F290B23C0002BD3F2 /* SceneDelegate.swift in Sources */,
 				C11456A9290C678700419A4B /* CollectionViewCell.swift in Sources */,
+				C104C043290F54E40007A279 /* DetailsVC + Grid.swift in Sources */,
 				C11456EF290DCECE00419A4B /* ComicsModel.swift in Sources */,
 				C11456B1290C681700419A4B /* SectionableList.swift in Sources */,
 				C11456DA290C843700419A4B /* ImageLoaderAdapter.swift in Sources */,
 				C184474E290F1EC6003F522D /* ReachabilityObserverDelegate.swift in Sources */,
+				C104C047290F56E40007A279 /* ComicCVC.swift in Sources */,
 				C11456AA290C678700419A4B /* UserDeafults.swift in Sources */,
 				C1145696290C64D500419A4B /* CharacterCVC.swift in Sources */,
 				C11456FE290ED97D00419A4B /* MCCharacter+CoreDataClass.swift in Sources */,
@@ -844,7 +872,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		C1844749290F1E61003F522D /* XCRemoteSwiftPackageReference "Reachability.swift" */ = {
+		C1844749290F1E61003F522D /* XCRemoteSwiftPackageReference "Reachability" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ashleymills/Reachability.swift";
 			requirement = {
@@ -857,7 +885,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		C184474A290F1E61003F522D /* Reachability */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C1844749290F1E61003F522D /* XCRemoteSwiftPackageReference "Reachability.swift" */;
+			package = C1844749290F1E61003F522D /* XCRemoteSwiftPackageReference "Reachability" */;
 			productName = Reachability;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -17,10 +17,10 @@ struct DefaultServiceAdapter  {
  /// Extension of the Service Adapter for Home Screen data and services
 extension DefaultServiceAdapter: HomeDataSourceService {
     
-    func fetchCharacters(name: String?, limit: Int, offset: Int?) -> DecodedFuture<CharactersModel> {
+    func fetchCharacters(nameStartsWith: String?, limit: Int, offset: Int?) -> DecodedFuture<CharactersModel> {
         return networkManager
             .request(for: CharactersModel.self,
-                     endpoint: EndpointCases.characters(name: name,
+                     endpoint: EndpointCases.characters(nameStartsWith: nameStartsWith,
                                                         limit: limit,
                                                         offset: offset))
     }

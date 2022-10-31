@@ -8,7 +8,7 @@
 import Foundation
 
 enum EndpointCases: Endpoint {
-    case characters(name: String?,
+    case characters(nameStartsWith: String?,
                     limit: Int,
                     offset: Int?)
     case getComics(characterId: Int,
@@ -39,13 +39,13 @@ enum EndpointCases: Endpoint {
     var body: [String : Any]? {
         var parameters = [String: Any]()
         switch self {
-        case .characters(name: let name,
+        case .characters(nameStartsWith: let nameStartsWith,
                          limit: let limit,
                          offset: let offset):
             parameters = [
                     "limit": limit, "offset": offset ?? 0]
-            if let name = name {
-                parameters["name"] = name
+            if let nameStartsWith = nameStartsWith, !nameStartsWith.isEmpty {
+                parameters["nameStartsWith"] = nameStartsWith
             }
         case .getComics(characterId: _,
                         limit: let limit):

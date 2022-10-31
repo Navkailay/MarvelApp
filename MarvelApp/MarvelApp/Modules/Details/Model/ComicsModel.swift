@@ -23,7 +23,8 @@ struct ComicsData: Codable {
 
 // MARK: - Result
 struct Comic: Codable {
-    let id, digitalID: Int?
+    let id: Int
+    let digitalID: Int?
     let title: String?
     let issueNumber: Int?
     let variantDescription, resultDescription, modified, isbn: String?
@@ -38,13 +39,13 @@ struct Comic: Codable {
     let collections, collectedIssues: [ComicSummary]?
     let dates: [DateElement]?
     let prices: [Price]?
-    let thumbnail: Thumbnail?
+    let thumbnail: Thumbnail
     let images: [Thumbnail]?
     let creators: Creators?
     let characters: Characters?
     let stories: Stories?
     let events: Characters?
-
+    
     enum CodingKeys: String, CodingKey {
         case id
         case digitalID = "digitalId"

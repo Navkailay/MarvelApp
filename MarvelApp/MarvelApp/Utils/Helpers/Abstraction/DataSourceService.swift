@@ -10,7 +10,7 @@ import Foundation
 typealias GenericResultClouser<T> = (Result<T, Error>) -> Void
 
 protocol HomeDataSourceService {
-    func fetchCharacters(name: String?, limit: Int, offset: Int?) -> DecodedFuture<CharactersModel>
+    func fetchCharacters(nameStartsWith: String?, limit: Int, offset: Int?) -> DecodedFuture<CharactersModel>
 }
 
 

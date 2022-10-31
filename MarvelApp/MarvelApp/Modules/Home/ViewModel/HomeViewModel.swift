@@ -16,61 +16,57 @@ class HomeViewModel {
     var charactersData : CharactersData?
     var sectionModels: [SectionModel] = []
     var isReachable = true
-    var reachability = try! Reachability()
+    var reachability = try? Reachability()
     
     private var cancellables = Set<AnyCancellable>()
     init(delegate: ViewModelDelegate? = nil) {
         self.delegate = delegate
-        reachability.whenReachable = { reachability in
+        reachability?.whenReachable = { reachability in
             self.isReachable = true
         }
-        reachability.whenUnreachable = { _ in
+        reachability?.whenUnreachable = { _ in
             delegate?.didFailed(with: FloatError(message: Constants.Message.noInternet,
                                                  type: .failure))
             self.isReachable = false
         }
-
+        
         do {
-            try reachability.startNotifier()
+            try reachability?.startNotifier()
         } catch {
             print("Unable to start notifier")
         }
-
     }
     
     deinit {
-        reachability.stopNotifier()
+        reachability?.stopNotifier()
     }
     
     /// setup the models for listing out the results on UI
     func setupSectionModels() {
         //reset
         self.sectionModels.removeAll()
-        // append Sections
+        let mcCharacters = service?.database.fetchCharacters(with: self.charactersData?.results?.compactMap({ $0.id }) ?? []) ?? []
+         // append Sections
         self.sectionModels.append(
             SectionModel(
                 headerModel: nil,
-                cellModels: (service?.database.characters ?? [])
-                    .map({ CharacterViewModel(character: $0,
+                cellModels: mcCharacters.map({ CharacterViewModel(character: $0,
                                               service: ImageLoaderService(imageLoader: ImageLoader.shared))
                     }),
                 footerModel: nil,
-                rowHeight: nil
+                itemSize: nil
             )
         )
     }
     
     /// fetched data from local database or from server if network is aviailable
     func fetchData(name: String?, limit: Int, offset: Int?) {
-        if reachability.connection == .unavailable {
-             DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
-                 self.setupSectionModels()
-                self.reload()
-            }
-//            self.reload()
+        if reachability?.connection == .unavailable {
+            self.setupSectionModels()
+            self.reload()
         } else {
             delegate?.didBeginFetching()
-            service?.fetchCharacters(name: name, limit: limit, offset: offset)
+            service?.fetchCharacters(nameStartsWith: name, limit: limit, offset: offset)
                 .sink(receiveCompletion: { [weak self] failure in
                     guard let self else { return }
                     switch failure {
@@ -84,10 +80,7 @@ class HomeViewModel {
                     self.charactersData = charactersModel.data
                     self.service?.database.addCharacters(characters: self.charactersData?.results ?? [])
                     self.setupSectionModels()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                        self.reload()
-                    }
-//                    self.reload()
+                    self.reload()
                 }).store(in: &cancellables)
         }
     }
@@ -119,27 +112,11 @@ extension HomeViewModel : SectionDataSource {
     }
     
     func rowHeightAt(at section: Int) -> CGFloat? {
-        return sectionModels[section].rowHeight
+        return sectionModels[section].itemSize?.height
         
     }
     
     typealias SectionType = SectionModel
     typealias ErrorType = FloatError
-    
-}
-
-extension HomeViewModel: ReachabilityObserverDelegate {
-    func reachabilityChanged(_ isReachable: Bool) {
-        //         if self.isReachable != nil {
-        if isReachable != self.isReachable {
-            if isReachable{
-                delegate?.didFailed(with: FloatError(message: Constants.Message.internetAvailable, type: .success))
-            } else {
-                delegate?.didFailed(with: FloatError(message: Constants.Message.noInternet, type: .failure))
-            }
-        }
-        //        }
-        self.isReachable = isReachable
-    }
     
 }

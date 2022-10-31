@@ -2,7 +2,7 @@
 //  MCThumbnail+CoreDataProperties.swift
 //  MarvelApp
 //
-//  Created by Navpreet Kailay on 30/10/22.
+//  Created by Navpreet Kailay on 31/10/22.
 //
 //
 
@@ -16,8 +16,8 @@ extension MCThumbnail {
         return NSFetchRequest<MCThumbnail>(entityName: "MCThumbnail")
     }
 
-    @NSManaged public var path: String
-    @NSManaged public var thumbnailExtension: String
+    @NSManaged public var path: String?
+    @NSManaged public var thumbnailExtension: String?
 
 }
 
