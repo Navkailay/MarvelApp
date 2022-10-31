@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="BadaBoomBB.ttf">
+            <string>BadaBoomBB</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CharacterCVC" id="gTV-IL-0wX" customClass="CharacterCVC" customModule="MarvelApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="229" height="195"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="229" height="195"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HId-Sj-Fcz">
+                        <rect key="frame" x="0.0" y="0.0" width="229" height="195"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8mK-8Y-EXV">
+                                <rect key="frame" x="40" y="10" width="149" height="149"/>
+                                <color key="backgroundColor" red="0.1019607931" green="0.1019607931" blue="0.1019607931" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="8mK-8Y-EXV" secondAttribute="height" multiplier="1:1" id="hE6-pP-21t"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nfh-Y7-wop">
+                                <rect key="frame" x="0.0" y="169" width="229" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="NuV-DM-t5k"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BadaBoomBB" family="BadaBoom BB" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="8mK-8Y-EXV" firstAttribute="top" secondItem="HId-Sj-Fcz" secondAttribute="top" constant="10" id="Le9-DH-lS9"/>
+                            <constraint firstAttribute="bottom" secondItem="Nfh-Y7-wop" secondAttribute="bottom" constant="10" id="ZTD-SA-svH"/>
+                            <constraint firstItem="Nfh-Y7-wop" firstAttribute="top" secondItem="8mK-8Y-EXV" secondAttribute="bottom" constant="10" id="hz0-f3-c62"/>
+                            <constraint firstItem="8mK-8Y-EXV" firstAttribute="centerX" secondItem="HId-Sj-Fcz" secondAttribute="centerX" id="qtv-6G-kKh"/>
+                            <constraint firstItem="Nfh-Y7-wop" firstAttribute="leading" secondItem="HId-Sj-Fcz" secondAttribute="leading" id="w2z-95-Mn4"/>
+                            <constraint firstAttribute="trailing" secondItem="Nfh-Y7-wop" secondAttribute="trailing" id="y2V-rk-brJ"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="HId-Sj-Fcz" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="KEk-lM-glk"/>
+                <constraint firstAttribute="bottom" secondItem="HId-Sj-Fcz" secondAttribute="bottom" id="cNz-wK-acd"/>
+                <constraint firstAttribute="trailing" secondItem="HId-Sj-Fcz" secondAttribute="trailing" id="kOS-pl-Rd8"/>
+                <constraint firstItem="HId-Sj-Fcz" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="q0W-8W-g8v"/>
+            </constraints>
+            <size key="customSize" width="325" height="322"/>
+            <connections>
+                <outlet property="imgView" destination="8mK-8Y-EXV" id="mlw-zd-oxI"/>
+                <outlet property="titleLabel" destination="Nfh-Y7-wop" id="IZV-f4-Ehi"/>
+            </connections>
+            <point key="canvasLocation" x="-313.07692307692309" y="-233.53080568720378"/>
+        </collectionViewCell>
+    </objects>
+</document>

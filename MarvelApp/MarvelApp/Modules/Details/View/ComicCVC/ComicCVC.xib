@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="BadaBoomBB.ttf">
+            <string>BadaBoomBB</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ComicCVC" id="gTV-IL-0wX" customClass="ComicCVC" customModule="MarvelApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="150" height="299"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="150" height="299"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nng-jY-oCz">
+                        <rect key="frame" x="0.0" y="47" width="150" height="252"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oiy-Jn-eDM">
+                                <rect key="frame" x="0.0" y="212" width="150" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="sMP-ak-2yo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BadaBoomBB" family="BadaBoom BB" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="xqZ-NU-oJm">
+                                <rect key="frame" x="5" y="10" width="140" height="192"/>
+                                <color key="backgroundColor" red="0.1019607931" green="0.1019607931" blue="0.1019607931" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Oiy-Jn-eDM" firstAttribute="leading" secondItem="nng-jY-oCz" secondAttribute="leading" id="2TL-No-Qhu"/>
+                            <constraint firstAttribute="trailing" secondItem="xqZ-NU-oJm" secondAttribute="trailing" constant="5" id="3mz-TY-XVl"/>
+                            <constraint firstItem="xqZ-NU-oJm" firstAttribute="top" secondItem="nng-jY-oCz" secondAttribute="top" constant="10" id="CuG-gN-EY0"/>
+                            <constraint firstItem="Oiy-Jn-eDM" firstAttribute="top" secondItem="xqZ-NU-oJm" secondAttribute="bottom" constant="10" id="JTF-3k-3y1"/>
+                            <constraint firstAttribute="bottom" secondItem="Oiy-Jn-eDM" secondAttribute="bottom" constant="10" id="Tyr-FQ-pX5"/>
+                            <constraint firstAttribute="trailing" secondItem="Oiy-Jn-eDM" secondAttribute="trailing" id="ddo-9g-K7d"/>
+                            <constraint firstItem="xqZ-NU-oJm" firstAttribute="leading" secondItem="nng-jY-oCz" secondAttribute="leading" constant="5" id="q5h-AI-Xw3"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="nng-jY-oCz" firstAttribute="bottom" secondItem="ZTg-uK-7eu" secondAttribute="bottom" id="2BA-3e-XQI"/>
+                <constraint firstItem="nng-jY-oCz" firstAttribute="trailing" secondItem="ZTg-uK-7eu" secondAttribute="trailing" id="7gX-Po-D95"/>
+                <constraint firstItem="nng-jY-oCz" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" id="9dE-9J-ZjT"/>
+                <constraint firstItem="nng-jY-oCz" firstAttribute="top" secondItem="ZTg-uK-7eu" secondAttribute="top" id="QQH-FC-2k6"/>
+            </constraints>
+            <size key="customSize" width="184" height="282"/>
+            <connections>
+                <outlet property="imgView" destination="xqZ-NU-oJm" id="kvU-eu-JYc"/>
+                <outlet property="titleLabel" destination="Oiy-Jn-eDM" id="PFg-hj-KYU"/>
+            </connections>
+            <point key="canvasLocation" x="50.769230769230766" y="88.507109004739334"/>
+        </collectionViewCell>
+    </objects>
+</document>
