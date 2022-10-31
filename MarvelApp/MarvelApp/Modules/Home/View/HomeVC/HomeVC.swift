@@ -76,6 +76,9 @@ class HomeVC: UIViewController {
     }
     /// triggers the action called by refreshControl.
     @objc func actionRefreshControl() {
+        if viewModel?.reachability?.connection == .unavailable {
+            presentFloatingAlert(with: FloatError(message: Constants.Message.noInternet, type: .failure))
+        }
         self.fetchData(name: searchTextField.text)
     }
 }

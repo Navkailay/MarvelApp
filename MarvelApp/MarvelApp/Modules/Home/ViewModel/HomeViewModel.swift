@@ -42,17 +42,22 @@ class HomeViewModel {
     }
     
     /// setup the models for listing out the results on UI
-    func setupSectionModels() {
+    func setupSectionModels(withoutInternet: Bool = false) {
         //reset
         self.sectionModels.removeAll()
-        let mcCharacters = service?.database.fetchCharacters(with: self.charactersData?.results?.compactMap({ $0.id }) ?? []) ?? []
-         // append Sections
+        var mcCharacters : [MCCharacter] = []
+        if (withoutInternet) {
+            mcCharacters = service?.database.characters ?? []
+        } else {
+            mcCharacters = service?.database.fetchCharacters(with: self.charactersData?.results?.compactMap({ $0.id }) ?? []) ?? []
+        }
+        // append Sections
         self.sectionModels.append(
             SectionModel(
                 headerModel: nil,
                 cellModels: mcCharacters.map({ CharacterViewModel(character: $0,
-                                              service: ImageLoaderService(imageLoader: ImageLoader.shared))
-                    }),
+                                                                  service: ImageLoaderService(imageLoader: ImageLoader.shared))
+                }),
                 footerModel: nil,
                 itemSize: nil
             )
@@ -62,7 +67,7 @@ class HomeViewModel {
     /// fetched data from local database or from server if network is aviailable
     func fetchData(name: String?, limit: Int, offset: Int?) {
         if reachability?.connection == .unavailable {
-            self.setupSectionModels()
+            self.setupSectionModels(withoutInternet: true)
             self.reload()
         } else {
             delegate?.didBeginFetching()

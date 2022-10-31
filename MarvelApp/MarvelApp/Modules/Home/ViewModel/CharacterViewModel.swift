@@ -19,8 +19,7 @@ class CharacterViewModel {
     var smallThumbnailPath: String {
         guard let thumbnail = character.thumbnail else { return ""  }
         return  "\(thumbnail.path ?? "")/\(MarvelImageSizeConfiguration.standard_xlarge.rawValue).\(thumbnail.thumbnailExtension ?? "")"
-        
-     }
+      }
     
     var largeThumbnailPath: String {
         guard let thumbnail = character.thumbnail else { return ""  }
