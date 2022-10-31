@@ -1,0 +1,12 @@
+//
+//  Config.xcconfig
+//  MarvelApp
+//
+//  Created by Navpreet Kailay on 29/10/22.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+marvelPublicKey = 8f69576142dc73528127d960a7410696
+marvelPrivateKey = e176398532d1391cbf1ce6aa58c3add6790ba1a7
