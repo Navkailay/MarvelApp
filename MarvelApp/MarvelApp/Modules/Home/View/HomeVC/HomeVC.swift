@@ -46,7 +46,7 @@ class HomeVC: UIViewController {
     func setupView() {
         searchTextField.superview?.roundedCorner(radius: 10)
         searchTextField.addDoneToKeyboard()
-        searchTextField.serPlaceHolderColor(.white, text: Constants.search)
+        searchTextField.serPlaceHolderColor(.lightGray, text: Constants.search)
        NotificationCenter.default.publisher(
             for: UITextField.textDidChangeNotification,
             object: searchTextField

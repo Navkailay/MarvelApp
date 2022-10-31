@@ -11,7 +11,7 @@ import UIKit
 extension HomeVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = DetailsVC.loadFromNib()
-        vc.modalPresentationStyle = .fullScreen
+//        vc.modalPresentationStyle = .fullScreen
         if let item = viewModel?.item(section: indexPath.section, index: indexPath.row) as? CharacterViewModel {
             vc.viewModel = DetailsViewModel(
                 delegate: vc, characterViewModel: item,
