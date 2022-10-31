@@ -16,7 +16,7 @@ extension UITextField {
                                     style: .plain,
                                     target: self,
                                     action: #selector(dismissKeyboard))
-        reset.tintColor = .black
+        reset.tintColor = .white
         bar.items = [UIBarButtonItem.flexibleSpace(), reset]
         bar.sizeToFit()
         self.inputAccessoryView = bar

@@ -18,7 +18,9 @@ extension SceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         let vc = HomeVC.loadFromNib()
         let viewModel = HomeViewModel(delegate: vc)
-        viewModel.service = DefaultServiceAdapter(networkManager: NetworkManager.shared, database: CoreDataManager.shared)
+        viewModel.service = DefaultServiceAdapter(networkManager: NetworkManager.shared,
+                                                  database: CoreDataManager.shared,
+                                                  imageService: ImageLoader.shared)
         vc.viewModel = viewModel
         let navigationController = UINavigationController(rootViewController: vc)
         navigationController.navigationBar.tintColor = Colors.appGreen.color

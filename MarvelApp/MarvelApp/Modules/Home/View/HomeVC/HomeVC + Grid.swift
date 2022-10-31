@@ -15,8 +15,7 @@ extension HomeVC: UICollectionViewDelegate {
         if let item = viewModel?.item(section: indexPath.section, index: indexPath.row) as? CharacterViewModel {
             vc.viewModel = DetailsViewModel(
                 delegate: vc, characterViewModel: item,
-                imageService: ImageLoader.shared,
-                service: DefaultServiceAdapter(networkManager: NetworkManager.shared, database: CoreDataManager.shared))
+                service: DefaultServiceAdapter(networkManager: NetworkManager.shared, database: CoreDataManager.shared, imageService: ImageLoader.shared))
         }
         self.showDetailViewController(vc, sender: self)
     }

@@ -16,8 +16,8 @@ extension MCThumbnail {
         return NSFetchRequest<MCThumbnail>(entityName: "MCThumbnail")
     }
 
-    @NSManaged public var path: String?
-    @NSManaged public var thumbnailExtension: String?
+    @NSManaged public var path: String
+    @NSManaged public var thumbnailExtension: String
 
 }
 

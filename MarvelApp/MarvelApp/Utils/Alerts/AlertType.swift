@@ -16,11 +16,11 @@ public enum AlertType{
     var backgroundColor: UIColor{
         switch self {
         case .failure:
-            return Colors.appGreen.color
+            return Colors.failureRed.color
         case .success:
             return Colors.appGreen.color
         case .loading:
-            return Colors.appGreen.color
+            return UIColor.orange //Colors.appGreen.color
         }
     }
 }

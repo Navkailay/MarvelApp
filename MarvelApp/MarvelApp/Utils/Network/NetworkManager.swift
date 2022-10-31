@@ -7,9 +7,10 @@
 
 import UIKit
 import Combine
+import Reachability
 
 public enum NetworkError: Error, Equatable {
-    case rechabilityError
+    case rechabilityError(_ localizedDescription: String? = nil)
     case invalidURL
     case invalidRequestBody(_ localizedDescription: String? = nil)
     case responseError
@@ -22,13 +23,16 @@ class NetworkManager: NSObject {
     static let shared = NetworkManager()
     private override init() { }
     private var cancellables = Set<AnyCancellable>()
-    
+    private let reachablity = try! Reachability()
     func request<T: Decodable>(for: T.Type = T.self,
                                endpoint: Endpoint
     ) -> DecodedFuture<T> {
         return Future { [weak self] promise in
             guard let self, var url = URL(string: endpoint.url) else {
                 return promise(.failure(.invalidURL))
+            }
+            if self.reachablity.connection == .unavailable {
+                return promise(.failure(.rechabilityError(Constants.Message.internetAvailable)))
             }
             // URL ENCODING
             if endpoint.httpMethod == .get {

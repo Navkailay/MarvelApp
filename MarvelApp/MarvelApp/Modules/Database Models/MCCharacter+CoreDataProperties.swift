@@ -2,7 +2,7 @@
 //  MCCharacter+CoreDataProperties.swift
 //  MarvelApp
 //
-//  Created by Navpreet Kailay on 30/10/22.
+//  Created by Navpreet Kailay on 31/10/22.
 //
 //
 
@@ -19,6 +19,7 @@ extension MCCharacter {
     @NSManaged public var characterDescription: String?
     @NSManaged public var id: Int64
     @NSManaged public var title: String?
+    @NSManaged public var isBookmark: Bool
     @NSManaged public var comics: NSSet?
     @NSManaged public var thumbnail: MCThumbnail?
 

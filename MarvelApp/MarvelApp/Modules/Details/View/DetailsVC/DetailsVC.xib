@@ -15,6 +15,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailsVC" customModule="MarvelApp" customModuleProvider="target">
             <connections>
+                <outlet property="bookmarkButton" destination="Chp-9d-GaH" id="HX6-K8-xkI"/>
                 <outlet property="descriptionLabel" destination="N1t-ES-EMJ" id="H6O-xe-S3O"/>
                 <outlet property="imageView" destination="3hB-fD-367" id="5qf-Y1-wVe"/>
                 <outlet property="titleLabel" destination="wIt-Ko-ymc" id="SI7-qE-rTX"/>
@@ -56,6 +57,10 @@
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                     <state key="normal" image="unbookmarked"/>
+                                                    <state key="selected" image="bookmarked"/>
+                                                    <connections>
+                                                        <action selector="bookmarkAction:" destination="-1" eventType="touchUpInside" id="QPr-cn-faa"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -165,6 +170,7 @@
         </view>
     </objects>
     <resources>
+        <image name="bookmarked" width="24" height="24"/>
         <image name="unbookmarked" width="24" height="24"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">

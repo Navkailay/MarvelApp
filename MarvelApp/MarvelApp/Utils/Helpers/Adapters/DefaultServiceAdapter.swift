@@ -10,6 +10,7 @@ import Foundation
 struct DefaultServiceAdapter  {
     let networkManager: NetworkManager
     let database: CoreDataManager
+    let imageService : ImageLoader
     //     let router: Router
 }
 

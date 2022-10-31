@@ -15,6 +15,9 @@ struct Constants {
         static let showResults = "Show Results"
         static let trySomeKeyword = "Please try some other keyword"
         static let noDescription = "No Description"
+        static let noInternet = "Please check you internet connection"
+        static let internetAvailable = "Internet is available now"
+
      }
     
     static let search = "Search"

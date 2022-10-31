@@ -34,7 +34,7 @@ extension UIViewController {
                 let alertHeight: CGFloat = 80
                 let alert = FloatAlertView(frame: CGRect(x: 0, y: -alertHeight, width: self.view.bounds.width, height: alertHeight))
                 alert.messageLabel.text = floatError.message.capitalized
-                alert.messageLabel.textColor = floatError.type == .failure ? .white : .black
+                alert.messageLabel.textColor = floatError.type == .loading ? .darkGray : .white
                 alert.messageLabel.superview?.backgroundColor = floatError.type.backgroundColor
                 self.view.addSubview(alert)
 

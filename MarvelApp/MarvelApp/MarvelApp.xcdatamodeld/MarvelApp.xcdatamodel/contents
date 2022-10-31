@@ -3,6 +3,7 @@
     <entity name="MCCharacter" representedClassName="MCCharacter" syncable="YES">
         <attribute name="characterDescription" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="isBookmark" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="comics" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MCComic"/>
         <relationship name="thumbnail" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MCThumbnail"/>
@@ -15,7 +16,7 @@
         <relationship name="thumbnail" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MCThumbnail"/>
     </entity>
     <entity name="MCThumbnail" representedClassName="MCThumbnail" syncable="YES">
-        <attribute name="path" optional="YES" attributeType="String"/>
-        <attribute name="thumbnailExtension" optional="YES" attributeType="String"/>
+        <attribute name="path" attributeType="String"/>
+        <attribute name="thumbnailExtension" attributeType="String"/>
     </entity>
 </model>

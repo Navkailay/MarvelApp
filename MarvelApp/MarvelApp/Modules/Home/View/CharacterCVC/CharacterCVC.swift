@@ -9,24 +9,29 @@ import UIKit
 import Combine
 
 class CharacterViewModel {
-    var character : CharacterData
+    var character : MCCharacter
     var service : ImageLoaderService?
     
-    init(character: CharacterData, service: ImageLoaderService? = nil) {
+    init(character: MCCharacter, service: ImageLoaderService? = nil) {
         self.character = character
         self.service = service
     }
     
     var smallThumbnailPath: String {
-        "\(character.thumbnail.path)/\(MarvelImageSizeConfiguration.standard_xlarge.rawValue).\(character.thumbnail.thumbnailExtension)"
-    }
+        guard let thumbnail = character.thumbnail else { return ""  }
+        return  "\(thumbnail.path)/\(MarvelImageSizeConfiguration.standard_xlarge.rawValue).\(thumbnail.thumbnailExtension)"
+        
+     }
     
     var largeThumbnailPath: String {
-        "\(character.thumbnail.path)/\(MarvelImageSizeConfiguration.portrait_incredible.rawValue).\(character.thumbnail.thumbnailExtension)"
+        guard let thumbnail = character.thumbnail else { return ""  }
+
+       return  "\(thumbnail.path)/\(MarvelImageSizeConfiguration.portrait_incredible.rawValue).\(thumbnail.thumbnailExtension)"
     }
     
     var characterDescription: String {
-        let desc = character.resultDescription.isEmpty ? Constants.Message.noDescription : character.resultDescription
+        guard let characterDescription = character.characterDescription else { return Constants.Message.noDescription }
+        let desc = characterDescription.isEmpty ? Constants.Message.noDescription : characterDescription
         return desc
     }
 }
@@ -59,7 +64,7 @@ class CharacterCVC: CollectionViewCell, ImageLoaderDelegate {
     override func configure(_ item: Any?) {
         guard let item = item as? CharacterViewModel else { return }
         service = item.service
-        titleLabel.text = item.character.name
+        titleLabel.text = item.character.title
         cancellable = loadImage(for: item.smallThumbnailPath).sink { [weak self] image in
             guard let self = self else { return }
             self.showImage(image: image)
