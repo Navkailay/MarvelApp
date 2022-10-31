@@ -74,6 +74,7 @@ class HomeVC: UIViewController {
     func fetchData(name: String?) {
         viewModel?.fetchData(name: name, limit: 20, offset: 0)
     }
+    
     /// triggers the action called by refreshControl.
     @objc func actionRefreshControl() {
         if viewModel?.reachability?.connection == .unavailable {
