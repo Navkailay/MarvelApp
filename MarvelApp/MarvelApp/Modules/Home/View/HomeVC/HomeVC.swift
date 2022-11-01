@@ -47,6 +47,7 @@ class HomeVC: UIViewController {
         searchTextField.superview?.roundedCorner(radius: 10)
         searchTextField.addDoneToKeyboard()
         searchTextField.serPlaceHolderColor(.lightGray, text: Constants.search)
+        collectionView.keyboardDismissMode = .onDrag
        NotificationCenter.default.publisher(
             for: UITextField.textDidChangeNotification,
             object: searchTextField

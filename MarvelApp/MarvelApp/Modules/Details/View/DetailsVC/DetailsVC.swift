@@ -41,7 +41,6 @@ class DetailsVC: UIViewController, ImageLoaderDelegate {
         DispatchQueue.main.async {
             self.imageView.addShadow(cornerRadius: 10)
         }
-       
         self.collectionView.register(ComicCVC.self)
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
