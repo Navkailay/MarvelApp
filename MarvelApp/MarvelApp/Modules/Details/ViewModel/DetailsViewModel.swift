@@ -10,13 +10,12 @@ import Combine
 import Reachability
 
 class DetailsViewModel {
-    
-    var delegate: ViewModelDelegate?
-    var characterViewModel: CharacterViewModel?
     /// service will be used to inject and use dependencies in and by this viewModel
     var service: DefaultServiceAdapter?
+    weak var delegate: ViewModelDelegate?
+    var characterViewModel: CharacterViewModel?
     var reachability = try? Reachability()
-    var comicsData: ComicsItem?
+//    var comicsData: ComicsItem?
     var sectionModels: [SectionModel] = []
     private var cancellables = Set<AnyCancellable>()
     
@@ -27,10 +26,10 @@ class DetailsViewModel {
         self.characterViewModel = characterViewModel
         self.service = service
         
-        reachability?.whenReachable = { reachability in
+        reachability?.whenReachable = { [weak self] reachability in
             //            self.isReachable = true
         }
-        reachability?.whenUnreachable = { _ in
+        reachability?.whenUnreachable = { [weak self] _ in
             delegate?.didFailed(with: FloatError(message: Constants.Message.noInternet,
                                                  type: .failure))
             //            self.isReachable = false

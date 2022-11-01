@@ -18,7 +18,7 @@ protocol Storable {
 
      associatedtype ContextType
     func fetchCharacter(with id: Int) -> CharacterType?
-    func fetchCharacters(with ids: [Int]) -> [CharacterType]?
+    func fetchCharacters(with ids: [Int], name: String?) -> [CharacterType]?
     func addCharacters(characters: [InputCharacterType])
     func updateBookmark(with id: Int)
     func addComics(comics: [InputComicType], to characterId: Int)
@@ -61,11 +61,19 @@ class CoreDataManager: Storable {
         return result?.first
     }
 
-    func fetchCharacters(with ids: [Int]) -> [MCCharacter]? {
+    func fetchCharacters(with ids: [Int], name: String?) -> [MCCharacter]? {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
         let managedContext = appDelegate.persistentContainer.viewContext
         let request = MCCharacter.fetchRequest()
-        request.predicate = NSPredicate(format: "id in %@", ids)
+        
+        if let name = name {
+            if !name.isEmpty {
+                request.predicate = NSPredicate(format: "title CONTAINS[c] %@", name)
+            }
+         } else {
+             request.predicate = NSPredicate(format: "id in %@", ids)
+         }
+        
         let result = try? managedContext.fetch(request)
         return result
     }

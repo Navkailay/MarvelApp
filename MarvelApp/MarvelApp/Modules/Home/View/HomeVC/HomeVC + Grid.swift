@@ -11,7 +11,6 @@ import UIKit
 extension HomeVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = DetailsVC.loadFromNib()
-        vc.modalPresentationStyle = .fullScreen
         if let item = viewModel?.item(section: indexPath.section, index: indexPath.row) as? CharacterViewModel {
             vc.viewModel = DetailsViewModel(
                 delegate: vc, characterViewModel: item,
@@ -46,6 +45,7 @@ extension HomeVC: UICollectionViewDataSource {
         case _ as CharacterViewModel:
             return CharacterCVC.defaultResuableIdentifier
         default:
+            // since we are in development stage so i have not removed the fatalError case
             fatalError("please configure the remaining cells or ReusableIdentifiers")
         }
     }

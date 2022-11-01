@@ -38,6 +38,9 @@ class DetailsVC: UIViewController, ImageLoaderDelegate {
     
     func setupView() {
         //UI
+        DispatchQueue.main.async {
+            self.imageView.addShadow(cornerRadius: 10)
+        }
         self.collectionView.register(ComicCVC.self)
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
@@ -52,7 +55,7 @@ class DetailsVC: UIViewController, ImageLoaderDelegate {
             guard let self = self else { return }
             self.showImage(image: image)
         }
-        titleLabel.superview?.setupGradient(frameBounds: self.titleLabel.superview?.bounds)
+//        titleLabel.superview?.setupGradient(frameBounds: self.titleLabel.superview?.bounds)
         bookmarkButton.isSelected = viewModel?.characterViewModel?.character.isBookmark ?? false
         // Fetch Data
         fetchComics()

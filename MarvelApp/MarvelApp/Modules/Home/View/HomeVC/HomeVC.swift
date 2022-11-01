@@ -46,7 +46,8 @@ class HomeVC: UIViewController {
     func setupView() {
         searchTextField.superview?.roundedCorner(radius: 10)
         searchTextField.addDoneToKeyboard()
-        searchTextField.serPlaceHolderColor(.white, text: Constants.search)
+        searchTextField.serPlaceHolderColor(.lightGray, text: Constants.search)
+        collectionView.keyboardDismissMode = .onDrag
        NotificationCenter.default.publisher(
             for: UITextField.textDidChangeNotification,
             object: searchTextField
@@ -56,7 +57,7 @@ class HomeVC: UIViewController {
        .debounce(for: .seconds(1), scheduler: DispatchQueue.main)
        .sink { [unowned self] keyword in
            debugPrint("keyword: \(keyword)")
-           viewModel?.fetchData(name: keyword, limit: 50, offset: 0)
+           fetchData(name: keyword)
         }
        .store(in: &cancellables)
            
@@ -72,14 +73,19 @@ class HomeVC: UIViewController {
     }
     /// calls marvel api or local database to fetch data
     func fetchData(name: String?) {
-        viewModel?.fetchData(name: name, limit: 20, offset: 0)
+        viewModel?.fetchData(name: name, limit: 100, offset: 0)
     }
+    
     /// triggers the action called by refreshControl.
     @objc func actionRefreshControl() {
+        if viewModel?.reachability?.connection == .unavailable {
+            presentFloatingAlert(with: FloatError(message: Constants.Message.noInternet, type: .failure))
+        }
         self.fetchData(name: searchTextField.text)
     }
 }
 
+// ViewModelDelegate provides the default set of properties and function that help in getting callbacks from viewModel to view
 extension HomeVC: ViewModelDelegate {
     func didBeginFetching() {
         self.loadingIndicator.startAnimating()

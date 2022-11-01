@@ -42,17 +42,17 @@ class HomeViewModel {
     }
     
     /// setup the models for listing out the results on UI
-    func setupSectionModels() {
+    func setupSectionModels(mcCharacters : [MCCharacter]) {
         //reset
         self.sectionModels.removeAll()
-        let mcCharacters = service?.database.fetchCharacters(with: self.charactersData?.results?.compactMap({ $0.id }) ?? []) ?? []
-         // append Sections
+
+        // append Sections
         self.sectionModels.append(
             SectionModel(
                 headerModel: nil,
                 cellModels: mcCharacters.map({ CharacterViewModel(character: $0,
-                                              service: ImageLoaderService(imageLoader: ImageLoader.shared))
-                    }),
+                                                                  service: ImageLoaderService(imageLoader: ImageLoader.shared))
+                }),
                 footerModel: nil,
                 itemSize: nil
             )
@@ -62,7 +62,7 @@ class HomeViewModel {
     /// fetched data from local database or from server if network is aviailable
     func fetchData(name: String?, limit: Int, offset: Int?) {
         if reachability?.connection == .unavailable {
-            self.setupSectionModels()
+            self.setupSectionModels(mcCharacters: service?.database.fetchCharacters(with: [], name: name) ?? [])
             self.reload()
         } else {
             delegate?.didBeginFetching()
@@ -79,14 +79,15 @@ class HomeViewModel {
                     guard let self else { return }
                     self.charactersData = charactersModel.data
                     self.service?.database.addCharacters(characters: self.charactersData?.results ?? [])
-                    self.setupSectionModels()
+                    let savedCharacters = self.service?.database.fetchCharacters(with: self.charactersData?.results?.compactMap({ $0.id }) ?? [], name: nil) ?? []
+                    self.setupSectionModels(mcCharacters: savedCharacters)
                     self.reload()
                 }).store(in: &cancellables)
         }
     }
 }
 
-
+/// SectionDataSource protocol provides a helpful set of properties and functions for List Datasources
 extension HomeViewModel : SectionDataSource {
     func reload() {
         self.delegate?.refreshUI()
