@@ -56,7 +56,7 @@ class HomeVC: UIViewController {
        .debounce(for: .seconds(1), scheduler: DispatchQueue.main)
        .sink { [unowned self] keyword in
            debugPrint("keyword: \(keyword)")
-           viewModel?.fetchData(name: keyword, limit: 50, offset: 0)
+           fetchData(name: keyword)
         }
        .store(in: &cancellables)
            
@@ -72,7 +72,7 @@ class HomeVC: UIViewController {
     }
     /// calls marvel api or local database to fetch data
     func fetchData(name: String?) {
-        viewModel?.fetchData(name: name, limit: 20, offset: 0)
+        viewModel?.fetchData(name: name, limit: 200, offset: 0)
     }
     
     /// triggers the action called by refreshControl.
@@ -84,6 +84,7 @@ class HomeVC: UIViewController {
     }
 }
 
+// ViewModelDelegate provides the default set of properties and function that help in getting callbacks from viewModel to view
 extension HomeVC: ViewModelDelegate {
     func didBeginFetching() {
         self.loadingIndicator.startAnimating()

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+/// SectionDataSource protocol provides a helpful set of properties and functions for List Datasources
 protocol SectionDataSource {
     associatedtype SectionType
     associatedtype ErrorType

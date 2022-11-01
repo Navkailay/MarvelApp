@@ -62,7 +62,7 @@ class HomeViewModel {
     /// fetched data from local database or from server if network is aviailable
     func fetchData(name: String?, limit: Int, offset: Int?) {
         if reachability?.connection == .unavailable {
-             self.setupSectionModels(mcCharacters: service?.database.fetchCharacters(with: [], name: name) ?? [])
+            self.setupSectionModels(mcCharacters: service?.database.fetchCharacters(with: [], name: name) ?? [])
             self.reload()
         } else {
             delegate?.didBeginFetching()
@@ -87,7 +87,7 @@ class HomeViewModel {
     }
 }
 
-
+/// SectionDataSource protocol provides a helpful set of properties and functions for List Datasources
 extension HomeViewModel : SectionDataSource {
     func reload() {
         self.delegate?.refreshUI()

@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 /// default implementation using protocol extensions.
-
 protocol NibLoadableView: AnyObject {
      static var nibName: String { get }
  }
