@@ -19,7 +19,7 @@ class ComicCVC: CollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         DispatchQueue.main.async {
-            self.imgView.roundedCorner(radius: 8)
+             self.imgView.addShadow(cornerRadius: 4, shadowRadius: 4)
         }
     }
     

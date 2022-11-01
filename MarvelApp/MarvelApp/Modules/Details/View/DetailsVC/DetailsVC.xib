@@ -35,7 +35,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="390" height="782"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e3g-ja-n8P">
-                                    <rect key="frame" x="0.0" y="0.0" width="390" height="970.33333333333337"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="990.33333333333337"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uZe-YX-dh8">
                                             <rect key="frame" x="25" y="54.999999999999972" width="340" height="469.33333333333326"/>
@@ -111,10 +111,10 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="m4P-QS-Cfb">
-                                            <rect key="frame" x="10" y="705.33333333333337" width="380" height="250"/>
+                                            <rect key="frame" x="10" y="705.33333333333337" width="380" height="270"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="250" id="tmg-bz-n8G"/>
+                                                <constraint firstAttribute="height" constant="270" id="tmg-bz-n8G"/>
                                             </constraints>
                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="SnY-Bb-Pxa">
                                                 <size key="itemSize" width="0.0" height="0.0"/>

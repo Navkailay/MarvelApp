@@ -31,7 +31,7 @@ public extension UIView {
 //MARK: UIImageView
 
 extension UIImageView {
-    func addShadow(cornerRadius: CGFloat) {
+    func addShadow(cornerRadius: CGFloat, shadowRadius: CGFloat? = nil) {
         self.layer.cornerRadius = cornerRadius
         self.layer.masksToBounds = true
 
@@ -41,7 +41,7 @@ extension UIImageView {
         self.superview?.layer.shadowColor = UIColor.lightGray.cgColor
         self.superview?.layer.shadowOffset = .zero //CGSize(width: 4, height: 4)
         self.superview?.layer.shadowOpacity = 0.8
-        self.superview?.layer.shadowRadius = 8.0
+        self.superview?.layer.shadowRadius = shadowRadius ?? 8.0
 
          self.autoresizingMask = [
             .flexibleWidth, .flexibleHeight

@@ -72,7 +72,7 @@ class HomeVC: UIViewController {
     }
     /// calls marvel api or local database to fetch data
     func fetchData(name: String?) {
-        viewModel?.fetchData(name: name, limit: 200, offset: 0)
+        viewModel?.fetchData(name: name, limit: 100, offset: 0)
     }
     
     /// triggers the action called by refreshControl.

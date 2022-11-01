@@ -33,20 +33,32 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="xqZ-NU-oJm">
-                                <rect key="frame" x="5" y="10" width="140" height="192"/>
-                                <color key="backgroundColor" red="0.1019607931" green="0.1019607931" blue="0.1019607931" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nXQ-ac-bFI">
+                                <rect key="frame" x="5" y="5" width="140" height="197"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="xqZ-NU-oJm">
+                                        <rect key="frame" x="0.0" y="0.0" width="140" height="197"/>
+                                        <color key="backgroundColor" red="0.1019607931" green="0.1019607931" blue="0.1019607931" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="xqZ-NU-oJm" secondAttribute="bottom" id="8NE-MS-Cnx"/>
+                                    <constraint firstItem="xqZ-NU-oJm" firstAttribute="top" secondItem="nXQ-ac-bFI" secondAttribute="top" id="bJy-Wl-f6e"/>
+                                    <constraint firstItem="xqZ-NU-oJm" firstAttribute="leading" secondItem="nXQ-ac-bFI" secondAttribute="leading" id="p7s-dn-wkf"/>
+                                    <constraint firstAttribute="trailing" secondItem="xqZ-NU-oJm" secondAttribute="trailing" id="yWM-Bf-Fvs"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Oiy-Jn-eDM" firstAttribute="leading" secondItem="nng-jY-oCz" secondAttribute="leading" id="2TL-No-Qhu"/>
-                            <constraint firstAttribute="trailing" secondItem="xqZ-NU-oJm" secondAttribute="trailing" constant="5" id="3mz-TY-XVl"/>
-                            <constraint firstItem="xqZ-NU-oJm" firstAttribute="top" secondItem="nng-jY-oCz" secondAttribute="top" constant="10" id="CuG-gN-EY0"/>
-                            <constraint firstItem="Oiy-Jn-eDM" firstAttribute="top" secondItem="xqZ-NU-oJm" secondAttribute="bottom" constant="10" id="JTF-3k-3y1"/>
+                            <constraint firstItem="nXQ-ac-bFI" firstAttribute="top" secondItem="nng-jY-oCz" secondAttribute="top" constant="5" id="IAR-mg-z0A"/>
+                            <constraint firstItem="Oiy-Jn-eDM" firstAttribute="top" secondItem="nXQ-ac-bFI" secondAttribute="bottom" constant="10" id="SVy-ZM-nE6"/>
                             <constraint firstAttribute="bottom" secondItem="Oiy-Jn-eDM" secondAttribute="bottom" constant="10" id="Tyr-FQ-pX5"/>
+                            <constraint firstAttribute="trailing" secondItem="nXQ-ac-bFI" secondAttribute="trailing" constant="5" id="a9r-rW-ikT"/>
                             <constraint firstAttribute="trailing" secondItem="Oiy-Jn-eDM" secondAttribute="trailing" id="ddo-9g-K7d"/>
-                            <constraint firstItem="xqZ-NU-oJm" firstAttribute="leading" secondItem="nng-jY-oCz" secondAttribute="leading" constant="5" id="q5h-AI-Xw3"/>
+                            <constraint firstItem="nXQ-ac-bFI" firstAttribute="leading" secondItem="nng-jY-oCz" secondAttribute="leading" constant="5" id="pKN-nz-s4Q"/>
                         </constraints>
                     </view>
                 </subviews>
