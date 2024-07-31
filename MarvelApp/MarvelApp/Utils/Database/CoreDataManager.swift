@@ -86,7 +86,7 @@ class CoreDataManager: Storable {
     func addCharacters(characters: [CharacterData]) {
         characters.forEach({
             if fetchCharacter(with: $0.id) == nil {
-                let mcCharacter = createCharacter(from: $0)
+                createCharacter(from: $0)
                 saveContext(context: managedContext)
                 debugPrint("mcCharacter id: \($0.id) saved")
             } else {
@@ -124,7 +124,8 @@ class CoreDataManager: Storable {
             if fetchComic(with: $0.id) != nil  {
                 debugPrint("comic id: \($0.id) already exist in the database")
             } else {
-                let mcComic = createComic(form: $0, for: character)
+                let mcComic = createComic(form: $0)
+                character?.addToComics(mcComic)
                 saveContext(context: managedContext)
                 debugPrint("comic id: \($0.id) saved with count: \(String(describing: character?.comics?.count))")            }
         })
@@ -132,7 +133,7 @@ class CoreDataManager: Storable {
 }
 // MCComic generator
 extension CoreDataManager {
-    func createComic(form data: Comic, for character: MCCharacter?) -> MCComic{
+    private func createComic(form data: Comic) -> MCComic{
         let mcComic = MCComic(context: managedContext)
         mcComic.id = Int64(data.id)
         mcComic.title = data.title
@@ -141,14 +142,13 @@ extension CoreDataManager {
         mcThumbnail.thumbnailExtension = data.thumbnail.thumbnailExtension
         mcThumbnail.path = data.thumbnail.path
         mcComic.thumbnail = mcThumbnail
-        character?.addToComics(mcComic)
         return mcComic
     }
 }
 
 // MCCharacter generater
 extension CoreDataManager {
-    func createCharacter(from data: CharacterData) -> MCCharacter {
+    private func createCharacter(from data: CharacterData) {
         let mcCharacter = MCCharacter(context: managedContext)
         mcCharacter.id = Int64(data.id)
         mcCharacter.title = data.name
@@ -157,6 +157,5 @@ extension CoreDataManager {
         mcThumbnail.thumbnailExtension = data.thumbnail.thumbnailExtension
         mcThumbnail.path = data.thumbnail.path
         mcCharacter.thumbnail = mcThumbnail
-        return mcCharacter
     }
 }
