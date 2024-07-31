@@ -27,6 +27,7 @@ extension HomeVC: UICollectionViewDelegate {
         }
         self.showDetailViewController(vc, sender: self)
     }
+    
 }
 
 extension HomeVC: UICollectionViewDataSource {
@@ -42,6 +43,8 @@ extension HomeVC: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: getReusableIdentifier(indexPath: indexPath), for: indexPath) as! CollectionViewCell
         cell.item = self.viewModel?.item(section: indexPath.section,
                                          index: indexPath.row)
+        cell.delegate = self
+        cell.indexPath = indexPath
         return cell
     }
     
@@ -73,9 +76,18 @@ extension HomeVC: UICollectionViewDataSource {
 extension HomeVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellWidth = collectionView.bounds.width/3
-        let height = collectionView.bounds.height * 0.25
+//        let height = collectionView.bounds.height * 0.25
 
         let size = CGSize(width: cellWidth, height: cellWidth + 35)
         return size
     }
+}
+
+
+extension HomeVC: CellDelegate {
+    func didtoggleBookmark(at indexPath: IndexPath?) {
+        guard let indexPath = indexPath else { return }
+        collectionView.reloadItems(at: [indexPath])
+    }
+ 
 }

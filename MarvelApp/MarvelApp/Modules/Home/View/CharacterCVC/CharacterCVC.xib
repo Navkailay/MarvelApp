@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -32,20 +33,13 @@
                                     <constraint firstAttribute="width" secondItem="8mK-8Y-EXV" secondAttribute="height" multiplier="1:1" id="hE6-pP-21t"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l3b-6Q-IAT">
-                                <rect key="frame" x="106.66666666666667" y="163" width="24.000000000000014" height="22"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="XVO-g9-I2L">
+                                <rect key="frame" x="184" y="167.66666666666666" width="22" height="21.666666666666657"/>
+                                <color key="tintColor" systemColor="systemYellowColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="22" id="zYb-Wt-4eI"/>
+                                    <constraint firstAttribute="width" secondItem="XVO-g9-I2L" secondAttribute="height" id="A1Q-oC-1ea"/>
                                 </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="unbookmarked"/>
-                                <state key="selected" image="bookmarked"/>
-                                <connections>
-                                    <action selector="actionBookmark:" destination="gTV-IL-0wX" eventType="touchUpInside" id="TTQ-WP-5CS"/>
-                                </connections>
-                            </button>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Label askdjasjdksadklasdjslkjsldasdsdlksajdasdslakd" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nfh-Y7-wop">
                                 <rect key="frame" x="1" y="200" width="235" height="37"/>
                                 <constraints>
@@ -59,10 +53,10 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="8mK-8Y-EXV" firstAttribute="top" secondItem="HId-Sj-Fcz" secondAttribute="top" constant="10" id="Le9-DH-lS9"/>
+                            <constraint firstItem="XVO-g9-I2L" firstAttribute="trailing" secondItem="8mK-8Y-EXV" secondAttribute="trailing" constant="-5" id="XYs-xk-i9O"/>
+                            <constraint firstItem="XVO-g9-I2L" firstAttribute="bottom" secondItem="8mK-8Y-EXV" secondAttribute="bottom" constant="-5" id="ZL8-H3-eKT"/>
                             <constraint firstAttribute="bottom" secondItem="Nfh-Y7-wop" secondAttribute="bottom" id="ZTD-SA-svH"/>
-                            <constraint firstItem="l3b-6Q-IAT" firstAttribute="bottom" secondItem="8mK-8Y-EXV" secondAttribute="bottom" constant="-10" id="gfz-Yz-kXn"/>
                             <constraint firstItem="Nfh-Y7-wop" firstAttribute="top" secondItem="8mK-8Y-EXV" secondAttribute="bottom" constant="5" id="hz0-f3-c62"/>
-                            <constraint firstItem="l3b-6Q-IAT" firstAttribute="centerX" secondItem="8mK-8Y-EXV" secondAttribute="centerX" id="i4k-Av-Qyx"/>
                             <constraint firstItem="8mK-8Y-EXV" firstAttribute="centerX" secondItem="HId-Sj-Fcz" secondAttribute="centerX" id="qtv-6G-kKh"/>
                             <constraint firstItem="Nfh-Y7-wop" firstAttribute="leading" secondItem="HId-Sj-Fcz" secondAttribute="leading" constant="1" id="w2z-95-Mn4"/>
                             <constraint firstAttribute="trailing" secondItem="Nfh-Y7-wop" secondAttribute="trailing" constant="1" id="y2V-rk-brJ"/>
@@ -79,7 +73,7 @@
             </constraints>
             <size key="customSize" width="333" height="364"/>
             <connections>
-                <outlet property="bookmarkButton" destination="l3b-6Q-IAT" id="wua-jF-ptW"/>
+                <outlet property="bookmarkImage" destination="XVO-g9-I2L" id="TFV-RV-6h8"/>
                 <outlet property="imgView" destination="8mK-8Y-EXV" id="mlw-zd-oxI"/>
                 <outlet property="titleLabel" destination="Nfh-Y7-wop" id="IZV-f4-Ehi"/>
             </connections>
@@ -87,7 +81,9 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="bookmarked" width="24" height="24"/>
-        <image name="unbookmarked" width="24" height="24"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

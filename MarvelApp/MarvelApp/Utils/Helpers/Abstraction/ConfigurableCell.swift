@@ -14,4 +14,8 @@ protocol ConfigurableCell: AnyObject{
 
 }
 
+extension ConfigurableCell {
+    func updateBookmark(for: IndexPath) {}
+}
+
  

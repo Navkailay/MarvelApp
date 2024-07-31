@@ -14,20 +14,20 @@ class HomeViewModel {
     /// service will be used to inject and use dependencies in and by this viewModel
     var service: DefaultServiceAdapter?
     var charactersData : CharactersData?
-    var sectionModels: [SectionModel] = []
-    var isReachable = true
+   @Published var sectionModels: [SectionModel] = []
+//    var isReachable = true
     var reachability = try? Reachability()
-    
     private var cancellables = Set<AnyCancellable>()
+    
     init(delegate: ViewModelDelegate? = nil) {
         self.delegate = delegate
         reachability?.whenReachable = { reachability in
-            self.isReachable = true
+//            self.isReachable = true
         }
         reachability?.whenUnreachable = { _ in
             delegate?.didFailed(with: FloatError(message: Constants.Message.noInternet,
                                                  type: .failure))
-            self.isReachable = false
+//            self.isReachable = false
         }
         
         do {
@@ -51,15 +51,15 @@ class HomeViewModel {
             SectionModel(
                 headerModel: nil,
                 cellModels: mcCharacters.map({ CharacterViewModel(character: $0,
-                                                                  service: ImageLoaderService(imageLoader: ImageLoader.shared))
+                                                                  service: ImageLoaderService(imageLoader: ImageLoader.shared),
+                                                                  databaseService: CoreDataManager.shared, index: 0, bookmarkToggled: nil)
                 }),
                 footerModel: nil,
                 itemSize: nil
             )
         )
     }
-    
-    /// fetched data from local database or from server if network is aviailable
+    /// fetched data from local database or from server if network is available
     func fetchData(name: String?, limit: Int, offset: Int?) {
         if reachability?.connection == .unavailable {
             self.setupSectionModels(mcCharacters: service?.database.fetchCharacters(with: [], name: name) ?? [])

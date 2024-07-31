@@ -12,18 +12,17 @@ class CharacterCVC: CollectionViewCell, ImageLoaderDelegate {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imgView: UIImageView!
-    @IBOutlet weak var bookmarkButton: UIButton!
-
+    @IBOutlet weak var bookmarkImage: UIImageView!
+    
     var cancellable: AnyCancellable?
     var animator: UIViewPropertyAnimator?
     var service : ImageLoaderService?
- 
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         DispatchQueue.main.async {
-//            self.imgView.makeCircular()
             self.imgView.roundedCorner(radius: 8)
-//            self.titleLabel.numberOfLines = 2
+            self.setupLongPressGesture()
         }
     }
     
@@ -31,7 +30,7 @@ class CharacterCVC: CollectionViewCell, ImageLoaderDelegate {
         super.prepareForReuse()
         imgView.image = nil
         imgView.alpha = 0.0
-        bookmarkButton.isSelected = false
+        bookmarkImage.isHidden = true
         animator?.stopAnimation(true)
         cancellable?.cancel()
     }
@@ -40,19 +39,30 @@ class CharacterCVC: CollectionViewCell, ImageLoaderDelegate {
         guard let item = item as? CharacterViewModel else { return }
         service = item.service
         titleLabel.text = item.character.title
-        bookmarkButton.isSelected = item.character.isBookmark 
-         cancellable = loadImage(for: item.smallThumbnailPath).sink { [weak self] image in
-            guard let self = self else { return }
-            self.showImage(image: image)
+        bookmarkImage.isHidden = item.character.isBookmark == false
+        if item.character.isBookmark {
+            bookmarkImage.image = UIImage(systemName: "star.fill")
         }
+        cancellable = loadImage(for: item.smallThumbnailPath)
+            .sink { [weak self] image in
+                guard let self = self else { return }
+                self.showImage(image: image)
+            }
     }
     
-    @IBAction func actionBookmark(_ sender: Any) {
-        guard let item = item as? CharacterViewModel else { return }
- //        guard let character = item.character else { return }
-        item.databaseService?.updateBookmark(with: Int(item.character.id))
-        item.bookmarkToggled?(item.character)
-        bookmarkButton.isSelected = !bookmarkButton.isSelected
+    func setupLongPressGesture() {
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(toggleBookmark))
+        longPressGesture.minimumPressDuration = 1
+        self.addGestureRecognizer(longPressGesture)
+    }
+    
+    @objc private func toggleBookmark( _ sender: Any) {
+        guard let item = item as? CharacterViewModel, let sender = sender as? UILongPressGestureRecognizer else { return }
+        if sender.state != .recognized {
+            item.databaseService?.updateBookmark(with: Int(item.character.id))
+            item.bookmarkToggled?(item.character)
+            delegate?.didtoggleBookmark(at: indexPath)
+        }
     }
     
     internal func showImage(image: UIImage?) {

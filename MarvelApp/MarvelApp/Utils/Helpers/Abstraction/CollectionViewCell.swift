@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import UIKit
 
 class CollectionViewCell: UICollectionViewCell, ConfigurableCell {
     var item: Any?{
@@ -19,6 +18,7 @@ class CollectionViewCell: UICollectionViewCell, ConfigurableCell {
     func configure(_ item: Any?) {
          
     }
- 
- //    weak var delegate: NSObjectProtocol?
- }
+    var delegate: CellDelegate?
+    var indexPath: IndexPath?
+    
+  }

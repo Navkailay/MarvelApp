@@ -104,11 +104,9 @@ extension HomeVC: ViewModelDelegate {
         collectionView.reloadData()
     }
     
-    func reloadRow(indexPath: IndexPath) {
-//        let indexPath = IndexPath(item: index, section: 0)
-        dump("indexPath: \(indexPath)")
-//        self.collectionView.reloadItems(at: [indexPath])
-        
-        self.collectionView.reloadData()
-    }
+//    func reloadRow(indexPath: IndexPath) {
+////        let indexPath = IndexPath(item: index, section: 0)
+//        dump("indexPath: \(indexPath)")
+//         self.collectionView.reloadData()
+//    }
 }
