@@ -73,7 +73,7 @@ class HomeVC: UIViewController {
     }
     /// calls marvel api or local database to fetch data
     func fetchData(name: String?) {
-        viewModel?.fetchData(name: name, limit: 100, offset: 0)
+        viewModel?.fetchData(name: name, limit: 20, offset: 0)
     }
     
     /// triggers the action called by refreshControl.
@@ -104,4 +104,11 @@ extension HomeVC: ViewModelDelegate {
         collectionView.reloadData()
     }
     
+    func reloadRow(indexPath: IndexPath) {
+//        let indexPath = IndexPath(item: index, section: 0)
+        dump("indexPath: \(indexPath)")
+//        self.collectionView.reloadItems(at: [indexPath])
+        
+        self.collectionView.reloadData()
+    }
 }

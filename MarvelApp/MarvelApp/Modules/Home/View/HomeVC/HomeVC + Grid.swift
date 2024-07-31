@@ -13,8 +13,17 @@ extension HomeVC: UICollectionViewDelegate {
         let vc = DetailsVC.loadFromNib()
         if let item = viewModel?.item(section: indexPath.section, index: indexPath.row) as? CharacterViewModel {
             vc.viewModel = DetailsViewModel(
-                delegate: vc, characterViewModel: item,
-                service: DefaultServiceAdapter(networkManager: NetworkManager.shared, database: CoreDataManager.shared, imageService: ImageLoader.shared))
+                delegate: vc,
+                characterViewModel: item,
+                service: DefaultServiceAdapter(networkManager: NetworkManager.shared, 
+                                               database: CoreDataManager.shared,
+                                               imageService: ImageLoader.shared
+                                              ),
+                bookmarkToggled: { character in
+                    //                    guard let self = self else { return }
+                    collectionView.reloadItems(at: [indexPath])
+                    //                    self.viewModel?.updateBookmark(for: indexPath, character: character)
+                })
         }
         self.showDetailViewController(vc, sender: self)
     }
@@ -49,12 +58,24 @@ extension HomeVC: UICollectionViewDataSource {
             fatalError("please configure the remaining cells or ReusableIdentifiers")
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+
 }
 
 extension HomeVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellSide = collectionView.bounds.width/3 - 8
-        let size = CGSize(width: cellSide, height: cellSide)
+        let cellWidth = collectionView.bounds.width/3
+        let height = collectionView.bounds.height * 0.25
+
+        let size = CGSize(width: cellWidth, height: cellWidth + 35)
         return size
     }
 }
