@@ -30,11 +30,11 @@ struct Configuration {
        static var marvelPrivateKey : String {
           Bundle.infoPListDictionary(value: "marvelPrivateKey")
       }
-       static var timeStamp : Double {
-           return Date().timeIntervalSince1970
+       static var timeStamp : Int {
+           return Int(Date().timeIntervalSince1970)
        }
        static var marvelHash : String {
-           let hash = "\(1)" + marvelPrivateKey + marvelPublicKey
+           let hash = "\(timeStamp)" + marvelPrivateKey + marvelPublicKey
            return hash.MD5
        }
     }

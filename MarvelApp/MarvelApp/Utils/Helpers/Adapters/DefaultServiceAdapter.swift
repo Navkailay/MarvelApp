@@ -16,7 +16,7 @@ struct DefaultServiceAdapter  {
 
  /// Extension of the Service Adapter for Home Screen data and services
 extension DefaultServiceAdapter: HomeDataSourceService {
-    
+
     func fetchCharacters(nameStartsWith: String?, limit: Int, offset: Int?) -> DecodedFuture<CharactersModel> {
         return networkManager
             .request(for: CharactersModel.self,

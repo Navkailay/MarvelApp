@@ -52,7 +52,7 @@ enum EndpointCases: Endpoint {
             parameters = ["limit": limit]
         }
         
-        parameters["ts"] = 1
+        parameters["ts"] = Configuration.MarvelAPIAuthorization.timeStamp
         parameters["apikey"] = Configuration.MarvelAPIAuthorization.marvelPublicKey
         parameters["hash"] = Configuration.MarvelAPIAuthorization.marvelHash
         return parameters

@@ -24,6 +24,7 @@ class NetworkManager: NSObject {
     private override init() { }
     private var cancellables = Set<AnyCancellable>()
     private let reachablity = try! Reachability()
+  
     func request<T: Decodable>(for: T.Type = T.self,
                                endpoint: Endpoint
     ) -> DecodedFuture<T> {
